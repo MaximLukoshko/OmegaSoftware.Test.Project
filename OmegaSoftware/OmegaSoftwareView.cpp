@@ -14,6 +14,7 @@
 
 #include "MyRectangle.h"
 #include "MyEllipse.h"
+#include "MyRelation.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -34,6 +35,7 @@ BEGIN_MESSAGE_MAP(COmegaSoftwareView, CView)
 	ON_WM_LBUTTONUP()
 	ON_COMMAND(ID_ELLIPSE_BUTTON, &COmegaSoftwareView::OnEllipseButton)
 	ON_WM_MOUSEMOVE()
+	ON_COMMAND(ID_RELATION_BUTTON, &COmegaSoftwareView::OnRelationButton)
 END_MESSAGE_MAP()
 
 // создание/уничтожение COmegaSoftwareView
@@ -157,8 +159,14 @@ void COmegaSoftwareView::OnEllipseButton()
 void COmegaSoftwareView::OnMouseMove(UINT nFlags, CPoint point)
 {
 	// TODO: добавьте свой код обработчика сообщений или вызов стандартного
-	if (nFlags&MK_RBUTTON == MK_RBUTTON){
+	if (nFlags & MK_RBUTTON == MK_RBUTTON){
 		MouseLeftButtonUP = point;
 		Invalidate();
 	}
+}
+
+
+void COmegaSoftwareView::OnRelationButton()
+{
+	action = new MyRelation(this);
 }

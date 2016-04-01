@@ -103,9 +103,11 @@
   <ItemGroup>
     <ClInclude Include="IMyButtonAction.h" />
     <ClInclude Include="MainFrm.h" />
+    <ClInclude Include="MyAction.h" />
     <ClInclude Include="MyEllipse.h" />
     <ClInclude Include="MyFigure.h" />
     <ClInclude Include="MyRectangle.h" />
+    <ClInclude Include="MyRelation.h" />
     <ClInclude Include="OmegaSoftware.h" />
     <ClInclude Include="OmegaSoftwareDoc.h" />
     <ClInclude Include="OmegaSoftwareView.h" />
@@ -116,9 +118,11 @@
   <ItemGroup>
     <ClCompile Include="IMyButtonAction.cpp" />
     <ClCompile Include="MainFrm.cpp" />
+    <ClCompile Include="MyAction.cpp" />
     <ClCompile Include="MyEllipse.cpp" />
     <ClCompile Include="MyFigure.cpp" />
     <ClCompile Include="MyRectangle.cpp" />
+    <ClCompile Include="MyRelation.cpp" />
     <ClCompile Include="OmegaSoftware.cpp" />
     <ClCompile Include="OmegaSoftwareDoc.cpp" />
     <ClCompile Include="OmegaSoftwareView.cpp" />

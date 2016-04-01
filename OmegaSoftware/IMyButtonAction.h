@@ -8,7 +8,7 @@ class IMyButtonAction
 protected:
 	// Указатель на CView, на котором действие будет отображаться
 	COmegaSoftwareView* view;
-	CRect* rectangle;
+
 
 public:
 	IMyButtonAction();

@@ -6,7 +6,9 @@ MyFigure::MyFigure()
 {
 }
 
-MyFigure::MyFigure(COmegaSoftwareView* v) :IMyButtonAction(v){
+MyFigure::MyFigure(COmegaSoftwareView* v) :IMyButtonAction(v)
+{
+	rectangle = new CRect(0, 0, 100, 100);
 }
 
 

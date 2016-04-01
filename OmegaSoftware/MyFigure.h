@@ -7,5 +7,7 @@ public:
 	MyFigure();
 	MyFigure(COmegaSoftwareView* v);
 	virtual ~MyFigure();
+protected:
+	CRect* rectangle;
 };
 
