@@ -1,12 +1,18 @@
 #pragma once
+#include "OmegaSoftwareView.h"
+
+class COmegaSoftwareView;
+
 class IMyButtonAction
 {
 protected:
 	// ”казатель на CView, на котором действие будет отображатьс€
-	CView* view;
+	COmegaSoftwareView* view;
+	CRect* rectangle;
 
 public:
-	IMyButtonAction(CView* view);
+	IMyButtonAction();
+	IMyButtonAction(COmegaSoftwareView* view);
 	virtual ~IMyButtonAction();
 
 	// «апуск обновлени€ данных

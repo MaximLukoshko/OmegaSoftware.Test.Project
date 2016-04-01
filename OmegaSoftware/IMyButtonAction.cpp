@@ -2,11 +2,14 @@
 #include "IMyButtonAction.h"
 
 
-IMyButtonAction::IMyButtonAction(CView* v)
-: view(v)
+IMyButtonAction::IMyButtonAction(COmegaSoftwareView* v) : view(v)
 {
+	rectangle = new CRect(0, 0, 100, 100);
 }
 
+IMyButtonAction::IMyButtonAction()
+{
+}
 
 IMyButtonAction::~IMyButtonAction()
 {

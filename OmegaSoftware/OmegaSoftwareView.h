@@ -3,7 +3,10 @@
 //
 
 #pragma once
+#include "IMyButtonAction.h"
+#include "OmegaSoftwareDoc.h"
 
+class IMyButtonAction;
 
 class COmegaSoftwareView : public CView
 {
@@ -40,6 +43,19 @@ protected:
 // Созданные функции схемы сообщений
 protected:
 	DECLARE_MESSAGE_MAP()
+protected:
+	// Действие по нажатии на кнопку
+	IMyButtonAction* action;
+	//Координаты мыши
+	CPoint MouseLeftButtonDOWN;
+	CPoint MouseLeftButtonUP;
+public:
+	// Вернуть координаты мыши
+	CPoint getMouseLeftButtonDOWN();
+	CPoint getMouseLeftButtonUP();
+	afx_msg void OnRectangleButton();
+	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
+	afx_msg void OnLButtonUp(UINT nFlags, CPoint point);
 };
 
 #ifndef _DEBUG  // отладочная версия в OmegaSoftwareView.cpp

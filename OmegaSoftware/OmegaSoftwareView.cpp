@@ -12,6 +12,8 @@
 #include "OmegaSoftwareDoc.h"
 #include "OmegaSoftwareView.h"
 
+#include "MyRectangle.h"
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -26,6 +28,9 @@ BEGIN_MESSAGE_MAP(COmegaSoftwareView, CView)
 	ON_COMMAND(ID_FILE_PRINT, &CView::OnFilePrint)
 	ON_COMMAND(ID_FILE_PRINT_DIRECT, &CView::OnFilePrint)
 	ON_COMMAND(ID_FILE_PRINT_PREVIEW, &CView::OnFilePrintPreview)
+	ON_COMMAND(ID_RECTANGLE_BUTTON, &COmegaSoftwareView::OnRectangleButton)
+	ON_WM_LBUTTONDOWN()
+	ON_WM_LBUTTONUP()
 END_MESSAGE_MAP()
 
 // создание/уничтожение COmegaSoftwareView
@@ -33,7 +38,7 @@ END_MESSAGE_MAP()
 COmegaSoftwareView::COmegaSoftwareView()
 {
 	// TODO: добавьте код создани€
-
+	action = NULL;
 }
 
 COmegaSoftwareView::~COmegaSoftwareView()
@@ -50,7 +55,7 @@ BOOL COmegaSoftwareView::PreCreateWindow(CREATESTRUCT& cs)
 
 // рисование COmegaSoftwareView
 
-void COmegaSoftwareView::OnDraw(CDC* /*pDC*/)
+void COmegaSoftwareView::OnDraw(CDC* pDC)
 {
 	COmegaSoftwareDoc* pDoc = GetDocument();
 	ASSERT_VALID(pDoc);
@@ -58,6 +63,10 @@ void COmegaSoftwareView::OnDraw(CDC* /*pDC*/)
 		return;
 
 	// TODO: добавьте здесь код отрисовки дл€ собственных данных
+	if (action){
+		pDC->SelectStockObject(NULL_BRUSH);
+		action->Draw(pDC);
+	}
 }
 
 
@@ -102,3 +111,35 @@ COmegaSoftwareDoc* COmegaSoftwareView::GetDocument() const // встроена неотлажен
 
 
 // обработчики сообщений COmegaSoftwareView
+
+
+// ¬ернуть координаты нажати€ мыши
+CPoint COmegaSoftwareView::getMouseLeftButtonDOWN()
+{
+	return MouseLeftButtonDOWN;
+}
+
+// ¬ернуть координаты отжати€ мыши
+CPoint COmegaSoftwareView::getMouseLeftButtonUP()
+{
+	return MouseLeftButtonUP;
+}
+
+
+void COmegaSoftwareView::OnRectangleButton()
+{
+	action = new MyRectangle(this);
+}
+
+
+void COmegaSoftwareView::OnLButtonDown(UINT nFlags, CPoint point)
+{
+	MouseLeftButtonDOWN = point;
+}
+
+
+void COmegaSoftwareView::OnLButtonUp(UINT nFlags, CPoint point)
+{
+	MouseLeftButtonUP = point;
+	Invalidate();
+}
