@@ -1,16 +1,16 @@
 
-// OmegaSoftware.Test.ProjectDoc.h : интерфейс класса COmegaSoftwareTestProjectDoc
+// OmegaSoftwareDoc.h : интерфейс класса COmegaSoftwareDoc
 //
 
 
 #pragma once
 
 
-class COmegaSoftwareTestProjectDoc : public CDocument
+class COmegaSoftwareDoc : public CDocument
 {
 protected: // создать только из сериализации
-	COmegaSoftwareTestProjectDoc();
-	DECLARE_DYNCREATE(COmegaSoftwareTestProjectDoc)
+	COmegaSoftwareDoc();
+	DECLARE_DYNCREATE(COmegaSoftwareDoc)
 
 // Атрибуты
 public:
@@ -29,7 +29,7 @@ public:
 
 // Реализация
 public:
-	virtual ~COmegaSoftwareTestProjectDoc();
+	virtual ~COmegaSoftwareDoc();
 #ifdef _DEBUG
 	virtual void AssertValid() const;
 	virtual void Dump(CDumpContext& dc) const;

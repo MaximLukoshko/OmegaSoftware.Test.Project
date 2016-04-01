@@ -1,39 +1,37 @@
 
-// OmegaSoftware.Test.Project.cpp : Определяет поведение классов для приложения.
+// OmegaSoftware.cpp : Определяет поведение классов для приложения.
 //
 
 #include "stdafx.h"
 #include "afxwinappex.h"
 #include "afxdialogex.h"
-#include "OmegaSoftware.Test.Project.h"
+#include "OmegaSoftware.h"
 #include "MainFrm.h"
 
-#include "OmegaSoftware.Test.ProjectDoc.h"
-#include "OmegaSoftware.Test.ProjectView.h"
+#include "OmegaSoftwareDoc.h"
+#include "OmegaSoftwareView.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
 
 
-// COmegaSoftwareTestProjectApp
+// COmegaSoftwareApp
 
-BEGIN_MESSAGE_MAP(COmegaSoftwareTestProjectApp, CWinAppEx)
-	ON_COMMAND(ID_APP_ABOUT, &COmegaSoftwareTestProjectApp::OnAppAbout)
+BEGIN_MESSAGE_MAP(COmegaSoftwareApp, CWinApp)
+	ON_COMMAND(ID_APP_ABOUT, &COmegaSoftwareApp::OnAppAbout)
 	// Стандартные команды по работе с файлами документов
-	ON_COMMAND(ID_FILE_NEW, &CWinAppEx::OnFileNew)
-	ON_COMMAND(ID_FILE_OPEN, &CWinAppEx::OnFileOpen)
+	ON_COMMAND(ID_FILE_NEW, &CWinApp::OnFileNew)
+	ON_COMMAND(ID_FILE_OPEN, &CWinApp::OnFileOpen)
 	// Стандартная команда настройки печати
-	ON_COMMAND(ID_FILE_PRINT_SETUP, &CWinAppEx::OnFilePrintSetup)
+	ON_COMMAND(ID_FILE_PRINT_SETUP, &CWinApp::OnFilePrintSetup)
 END_MESSAGE_MAP()
 
 
-// создание COmegaSoftwareTestProjectApp
+// создание COmegaSoftwareApp
 
-COmegaSoftwareTestProjectApp::COmegaSoftwareTestProjectApp()
+COmegaSoftwareApp::COmegaSoftwareApp()
 {
-	m_bHiColorIcons = TRUE;
-
 	// поддержка диспетчера перезагрузки
 	m_dwRestartManagerSupportFlags = AFX_RESTART_MANAGER_SUPPORT_ALL_ASPECTS;
 #ifdef _MANAGED
@@ -45,20 +43,20 @@ COmegaSoftwareTestProjectApp::COmegaSoftwareTestProjectApp()
 
 	// TODO: замените ниже строку идентификатора приложения строкой уникального идентификатора; рекомендуемый
 	// формат для строки: ИмяКомпании.ИмяПродукта.СубПродукт.СведенияОВерсии
-	SetAppID(_T("OmegaSoftware.Test.Project.AppID.NoVersion"));
+	SetAppID(_T("OmegaSoftware.AppID.NoVersion"));
 
 	// TODO: добавьте код создания,
 	// Размещает весь важный код инициализации в InitInstance
 }
 
-// Единственный объект COmegaSoftwareTestProjectApp
+// Единственный объект COmegaSoftwareApp
 
-COmegaSoftwareTestProjectApp theApp;
+COmegaSoftwareApp theApp;
 
 
-// инициализация COmegaSoftwareTestProjectApp
+// инициализация COmegaSoftwareApp
 
-BOOL COmegaSoftwareTestProjectApp::InitInstance()
+BOOL COmegaSoftwareApp::InitInstance()
 {
 	// InitCommonControlsEx() требуются для Windows XP, если манифест
 	// приложения использует ComCtl32.dll версии 6 или более поздней версии для включения
@@ -70,7 +68,7 @@ BOOL COmegaSoftwareTestProjectApp::InitInstance()
 	InitCtrls.dwICC = ICC_WIN95_CLASSES;
 	InitCommonControlsEx(&InitCtrls);
 
-	CWinAppEx::InitInstance();
+	CWinApp::InitInstance();
 
 
 	// Инициализация библиотек OLE
@@ -98,24 +96,14 @@ BOOL COmegaSoftwareTestProjectApp::InitInstance()
 	LoadStdProfileSettings(4);  // Загрузите стандартные параметры INI-файла (включая MRU)
 
 
-	InitContextMenuManager();
-
-	InitKeyboardManager();
-
-	InitTooltipManager();
-	CMFCToolTipInfo ttParams;
-	ttParams.m_bVislManagerTheme = TRUE;
-	theApp.GetTooltipManager()->SetTooltipParams(AFX_TOOLTIP_TYPE_ALL,
-		RUNTIME_CLASS(CMFCToolTipCtrl), &ttParams);
-
 	// Зарегистрируйте шаблоны документов приложения.  Шаблоны документов
 	//  выступают в роли посредника между документами, окнами рамок и представлениями
 	CSingleDocTemplate* pDocTemplate;
 	pDocTemplate = new CSingleDocTemplate(
 		IDR_MAINFRAME,
-		RUNTIME_CLASS(COmegaSoftwareTestProjectDoc),
+		RUNTIME_CLASS(COmegaSoftwareDoc),
 		RUNTIME_CLASS(CMainFrame),       // основное окно рамки SDI
-		RUNTIME_CLASS(COmegaSoftwareTestProjectView));
+		RUNTIME_CLASS(COmegaSoftwareView));
 	if (!pDocTemplate)
 		return FALSE;
 	AddDocTemplate(pDocTemplate);
@@ -141,15 +129,15 @@ BOOL COmegaSoftwareTestProjectApp::InitInstance()
 	return TRUE;
 }
 
-int COmegaSoftwareTestProjectApp::ExitInstance()
+int COmegaSoftwareApp::ExitInstance()
 {
 	//TODO: обработайте дополнительные ресурсы, которые могли быть добавлены
 	AfxOleTerm(FALSE);
 
-	return CWinAppEx::ExitInstance();
+	return CWinApp::ExitInstance();
 }
 
-// обработчики сообщений COmegaSoftwareTestProjectApp
+// обработчики сообщений COmegaSoftwareApp
 
 
 // Диалоговое окно CAboutDlg используется для описания сведений о приложении
@@ -183,35 +171,13 @@ BEGIN_MESSAGE_MAP(CAboutDlg, CDialogEx)
 END_MESSAGE_MAP()
 
 // Команда приложения для запуска диалога
-void COmegaSoftwareTestProjectApp::OnAppAbout()
+void COmegaSoftwareApp::OnAppAbout()
 {
 	CAboutDlg aboutDlg;
 	aboutDlg.DoModal();
 }
 
-// COmegaSoftwareTestProjectApp настройка методов загрузки и сохранения
-
-void COmegaSoftwareTestProjectApp::PreLoadState()
-{
-	BOOL bNameValid;
-	CString strName;
-	bNameValid = strName.LoadString(IDS_EDIT_MENU);
-	ASSERT(bNameValid);
-	GetContextMenuManager()->AddMenu(strName, IDR_POPUP_EDIT);
-	bNameValid = strName.LoadString(IDS_EXPLORER);
-	ASSERT(bNameValid);
-	GetContextMenuManager()->AddMenu(strName, IDR_POPUP_EXPLORER);
-}
-
-void COmegaSoftwareTestProjectApp::LoadCustomState()
-{
-}
-
-void COmegaSoftwareTestProjectApp::SaveCustomState()
-{
-}
-
-// обработчики сообщений COmegaSoftwareTestProjectApp
+// обработчики сообщений COmegaSoftwareApp
 
 
 

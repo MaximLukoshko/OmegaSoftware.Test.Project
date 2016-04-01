@@ -1,15 +1,15 @@
 
-// OmegaSoftware.Test.ProjectDoc.cpp : реализация класса COmegaSoftwareTestProjectDoc
+// OmegaSoftwareDoc.cpp : реализация класса COmegaSoftwareDoc
 //
 
 #include "stdafx.h"
 // SHARED_HANDLERS можно определить в обработчиках фильтров просмотра реализации проекта ATL, эскизов
 // и поиска; позволяет совместно использовать код документа в данным проекте.
 #ifndef SHARED_HANDLERS
-#include "OmegaSoftware.Test.Project.h"
+#include "OmegaSoftware.h"
 #endif
 
-#include "OmegaSoftware.Test.ProjectDoc.h"
+#include "OmegaSoftwareDoc.h"
 
 #include <propkey.h>
 
@@ -17,27 +17,27 @@
 #define new DEBUG_NEW
 #endif
 
-// COmegaSoftwareTestProjectDoc
+// COmegaSoftwareDoc
 
-IMPLEMENT_DYNCREATE(COmegaSoftwareTestProjectDoc, CDocument)
+IMPLEMENT_DYNCREATE(COmegaSoftwareDoc, CDocument)
 
-BEGIN_MESSAGE_MAP(COmegaSoftwareTestProjectDoc, CDocument)
+BEGIN_MESSAGE_MAP(COmegaSoftwareDoc, CDocument)
 END_MESSAGE_MAP()
 
 
-// создание/уничтожение COmegaSoftwareTestProjectDoc
+// создание/уничтожение COmegaSoftwareDoc
 
-COmegaSoftwareTestProjectDoc::COmegaSoftwareTestProjectDoc()
+COmegaSoftwareDoc::COmegaSoftwareDoc()
 {
 	// TODO: добавьте код для одноразового вызова конструктора
 
 }
 
-COmegaSoftwareTestProjectDoc::~COmegaSoftwareTestProjectDoc()
+COmegaSoftwareDoc::~COmegaSoftwareDoc()
 {
 }
 
-BOOL COmegaSoftwareTestProjectDoc::OnNewDocument()
+BOOL COmegaSoftwareDoc::OnNewDocument()
 {
 	if (!CDocument::OnNewDocument())
 		return FALSE;
@@ -51,9 +51,9 @@ BOOL COmegaSoftwareTestProjectDoc::OnNewDocument()
 
 
 
-// сериализация COmegaSoftwareTestProjectDoc
+// сериализация COmegaSoftwareDoc
 
-void COmegaSoftwareTestProjectDoc::Serialize(CArchive& ar)
+void COmegaSoftwareDoc::Serialize(CArchive& ar)
 {
 	if (ar.IsStoring())
 	{
@@ -68,7 +68,7 @@ void COmegaSoftwareTestProjectDoc::Serialize(CArchive& ar)
 #ifdef SHARED_HANDLERS
 
 // Поддержка для эскизов
-void COmegaSoftwareTestProjectDoc::OnDrawThumbnail(CDC& dc, LPRECT lprcBounds)
+void COmegaSoftwareDoc::OnDrawThumbnail(CDC& dc, LPRECT lprcBounds)
 {
 	// Измените этот код для отображения данных документа
 	dc.FillSolidRect(lprcBounds, RGB(255, 255, 255));
@@ -89,7 +89,7 @@ void COmegaSoftwareTestProjectDoc::OnDrawThumbnail(CDC& dc, LPRECT lprcBounds)
 }
 
 // Поддержка обработчиков поиска
-void COmegaSoftwareTestProjectDoc::InitializeSearchContent()
+void COmegaSoftwareDoc::InitializeSearchContent()
 {
 	CString strSearchContent;
 	// Задайте содержимое поиска из данных документа. 
@@ -99,7 +99,7 @@ void COmegaSoftwareTestProjectDoc::InitializeSearchContent()
 	SetSearchContent(strSearchContent);
 }
 
-void COmegaSoftwareTestProjectDoc::SetSearchContent(const CString& value)
+void COmegaSoftwareDoc::SetSearchContent(const CString& value)
 {
 	if (value.IsEmpty())
 	{
@@ -119,19 +119,19 @@ void COmegaSoftwareTestProjectDoc::SetSearchContent(const CString& value)
 
 #endif // SHARED_HANDLERS
 
-// диагностика COmegaSoftwareTestProjectDoc
+// диагностика COmegaSoftwareDoc
 
 #ifdef _DEBUG
-void COmegaSoftwareTestProjectDoc::AssertValid() const
+void COmegaSoftwareDoc::AssertValid() const
 {
 	CDocument::AssertValid();
 }
 
-void COmegaSoftwareTestProjectDoc::Dump(CDumpContext& dc) const
+void COmegaSoftwareDoc::Dump(CDumpContext& dc) const
 {
 	CDocument::Dump(dc);
 }
 #endif //_DEBUG
 
 
-// команды COmegaSoftwareTestProjectDoc
+// команды COmegaSoftwareDoc
