@@ -178,6 +178,3 @@ void COmegaSoftwareApp::OnAppAbout()
 }
 
 // обработчики сообщений COmegaSoftwareApp
-
-
-

@@ -13,6 +13,7 @@
 #include "OmegaSoftwareView.h"
 
 #include "MyRectangle.h"
+#include "MyEllipse.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -31,6 +32,8 @@ BEGIN_MESSAGE_MAP(COmegaSoftwareView, CView)
 	ON_COMMAND(ID_RECTANGLE_BUTTON, &COmegaSoftwareView::OnRectangleButton)
 	ON_WM_LBUTTONDOWN()
 	ON_WM_LBUTTONUP()
+	ON_COMMAND(ID_ELLIPSE_BUTTON, &COmegaSoftwareView::OnEllipseButton)
+	ON_WM_MOUSEMOVE()
 END_MESSAGE_MAP()
 
 // создание/уничтожение COmegaSoftwareView
@@ -142,4 +145,20 @@ void COmegaSoftwareView::OnLButtonUp(UINT nFlags, CPoint point)
 {
 	MouseLeftButtonUP = point;
 	Invalidate();
+}
+
+
+void COmegaSoftwareView::OnEllipseButton()
+{
+	action = new MyEllipse(this);
+}
+
+
+void COmegaSoftwareView::OnMouseMove(UINT nFlags, CPoint point)
+{
+	// TODO: добавьте свой код обработчика сообщений или вызов стандартного
+	if (nFlags&MK_RBUTTON == MK_RBUTTON){
+		MouseLeftButtonUP = point;
+		Invalidate();
+	}
 }

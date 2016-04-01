@@ -56,6 +56,8 @@ public:
 	afx_msg void OnRectangleButton();
 	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
 	afx_msg void OnLButtonUp(UINT nFlags, CPoint point);
+	afx_msg void OnEllipseButton();
+	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
 };
 
 #ifndef _DEBUG  // отладочная версия в OmegaSoftwareView.cpp
