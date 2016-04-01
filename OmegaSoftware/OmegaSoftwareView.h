@@ -7,6 +7,7 @@
 #include "OmegaSoftwareDoc.h"
 
 class IMyButtonAction;
+class COmegaSoftwareDoc;
 
 class COmegaSoftwareView : public CView
 {

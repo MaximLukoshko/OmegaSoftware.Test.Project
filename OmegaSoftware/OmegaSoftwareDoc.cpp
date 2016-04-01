@@ -42,6 +42,7 @@ BOOL COmegaSoftwareDoc::OnNewDocument()
 	if (!CDocument::OnNewDocument())
 		return FALSE;
 
+	figuresData = new MyData();
 	// TODO: добавьте код повторной инициализации
 	// (ƒокументы SDI будут повторно использовать этот документ)
 
@@ -135,3 +136,10 @@ void COmegaSoftwareDoc::Dump(CDumpContext& dc) const
 
 
 // команды COmegaSoftwareDoc
+
+
+// ѕолучить данные о фигурах
+MyData COmegaSoftwareDoc::getFigureData()
+{
+	return *figuresData;
+}

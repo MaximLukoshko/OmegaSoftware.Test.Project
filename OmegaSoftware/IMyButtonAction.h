@@ -1,5 +1,4 @@
 #pragma once
-#include "OmegaSoftwareView.h"
 
 class COmegaSoftwareView;
 

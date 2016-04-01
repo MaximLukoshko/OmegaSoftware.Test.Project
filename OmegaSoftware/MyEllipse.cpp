@@ -15,9 +15,6 @@ MyEllipse::~MyEllipse()
 {
 }
 
-void MyEllipse::Execute(){
-
-};
 
 // Прорисовка самой фигуры	
 void MyEllipse::Draw(CDC* pDC){
