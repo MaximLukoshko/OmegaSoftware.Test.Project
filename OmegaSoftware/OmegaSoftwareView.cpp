@@ -12,6 +12,9 @@
 #include "OmegaSoftwareDoc.h"
 #include "OmegaSoftwareView.h"
 
+#include "MyRectangle.h"
+#include "MyEllipse.h"
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -26,6 +29,11 @@ BEGIN_MESSAGE_MAP(COmegaSoftwareView, CView)
 	ON_COMMAND(ID_FILE_PRINT, &CView::OnFilePrint)
 	ON_COMMAND(ID_FILE_PRINT_DIRECT, &CView::OnFilePrint)
 	ON_COMMAND(ID_FILE_PRINT_PREVIEW, &CView::OnFilePrintPreview)
+	ON_COMMAND(ID_RECTANGLE_BUTTON, &COmegaSoftwareView::OnRectangleButton)
+	ON_WM_LBUTTONDOWN()
+	ON_WM_LBUTTONUP()
+	ON_COMMAND(ID_ELLIPSE_BUTTON, &COmegaSoftwareView::OnEllipseButton)
+	ON_WM_MOUSEMOVE()
 END_MESSAGE_MAP()
 
 // создание/уничтожение COmegaSoftwareView
@@ -33,7 +41,7 @@ END_MESSAGE_MAP()
 COmegaSoftwareView::COmegaSoftwareView()
 {
 	// TODO: добавьте код создания
-
+	action = NULL;
 }
 
 COmegaSoftwareView::~COmegaSoftwareView()
@@ -50,7 +58,7 @@ BOOL COmegaSoftwareView::PreCreateWindow(CREATESTRUCT& cs)
 
 // рисование COmegaSoftwareView
 
-void COmegaSoftwareView::OnDraw(CDC* /*pDC*/)
+void COmegaSoftwareView::OnDraw(CDC* pDC)
 {
 	COmegaSoftwareDoc* pDoc = GetDocument();
 	ASSERT_VALID(pDoc);
@@ -58,6 +66,10 @@ void COmegaSoftwareView::OnDraw(CDC* /*pDC*/)
 		return;
 
 	// TODO: добавьте здесь код отрисовки для собственных данных
+	if (action){
+		pDC->SelectStockObject(NULL_BRUSH);
+		action->Draw(pDC);
+	}
 }
 
 
@@ -102,3 +114,51 @@ COmegaSoftwareDoc* COmegaSoftwareView::GetDocument() const // встроена неотлажен
 
 
 // обработчики сообщений COmegaSoftwareView
+
+
+// Вернуть координаты нажатия мыши
+CPoint COmegaSoftwareView::getMouseLeftButtonDOWN()
+{
+	return MouseLeftButtonDOWN;
+}
+
+// Вернуть координаты отжатия мыши
+CPoint COmegaSoftwareView::getMouseLeftButtonUP()
+{
+	return MouseLeftButtonUP;
+}
+
+
+void COmegaSoftwareView::OnRectangleButton()
+{
+	action = new MyRectangle(this);
+}
+
+
+void COmegaSoftwareView::OnLButtonDown(UINT nFlags, CPoint point)
+{
+	MouseLeftButtonDOWN = point;
+}
+
+
+void COmegaSoftwareView::OnLButtonUp(UINT nFlags, CPoint point)
+{
+	MouseLeftButtonUP = point;
+	Invalidate();
+}
+
+
+void COmegaSoftwareView::OnEllipseButton()
+{
+	action = new MyEllipse(this);
+}
+
+
+void COmegaSoftwareView::OnMouseMove(UINT nFlags, CPoint point)
+{
+	// TODO: добавьте свой код обработчика сообщений или вызов стандартного
+	if (nFlags&MK_RBUTTON == MK_RBUTTON){
+		MouseLeftButtonUP = point;
+		Invalidate();
+	}
+}
