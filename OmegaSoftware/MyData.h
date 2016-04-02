@@ -20,8 +20,8 @@ public:
 	list<MyRelation*>* relation;
 	void Draw(CDC* pDC);
 	// Добавление фигуры в список
-	void addFigure(MyFigure* figure);
+	bool addFigure(MyFigure* figure);
 	// Добавление связи в список
-	void addRelation(MyRelation* rel);
+	bool addRelation(MyRelation* rel);
 };
 

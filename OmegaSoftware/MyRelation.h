@@ -8,7 +8,7 @@ class MyFigure;
 class MyRelation :
 	public MyAction
 {
-	friend void MyData::addRelation(MyRelation* rel);
+	friend bool MyData::addRelation(MyRelation* rel);
 
 protected:
 	MyFigure* figure_1;

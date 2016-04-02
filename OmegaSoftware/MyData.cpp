@@ -17,9 +17,10 @@ MyData::~MyData()
 
 
 // Добавление фигуры в список
-void MyData::addFigure(MyFigure* figure)
+bool MyData::addFigure(MyFigure* figure)
 {
 	figures->push_back(figure);
+	return true;
 }
 
 void MyData::Draw(CDC* pDC)
@@ -36,7 +37,7 @@ void MyData::Draw(CDC* pDC)
 }
 
 // Добавление связи в список
-void MyData::addRelation(MyRelation* rel)
+bool MyData::addRelation(MyRelation* rel)
 {
 	rel->figure_1 = NULL;
 	rel->figure_2 = NULL;
@@ -56,10 +57,19 @@ void MyData::addRelation(MyRelation* rel)
 			break;
 		}
 	}
+	for each (MyRelation* relat in *relation)
+	{
+		if (relat->figure_1 == rel->figure_1 && relat->figure_2 == rel->figure_2)
+		{
+			return false;
+		}
+	}
+
 	if (rel->figure_1 && rel->figure_2)
 	{
 		rel->ActionStartPoint = rel->figure_1->getCenterPoint();
 		rel->ActionStopPoint = rel->figure_2->getCenterPoint();
 		relation->push_back(rel);
+		return true;
 	}
 }

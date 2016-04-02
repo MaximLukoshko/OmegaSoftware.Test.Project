@@ -23,8 +23,15 @@ void MyRelation::Execute()
 	ASSERT_VALID(pDoc);
 	if (!pDoc)
 		return;
-	pDoc->getFigureData().addRelation(this);
-	view->setAction(new MyRelation(view));
+	bool completed = pDoc->getFigureData().addRelation(this);
+	if (completed)
+	{
+		view->setAction(new MyRelation(view));
+	}
+	else
+	{
+		ActionStartPoint = ActionStopPoint = CPoint();
+	}
 }
 
 // Интерфейс для рисования
