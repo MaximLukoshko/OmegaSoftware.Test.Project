@@ -38,6 +38,8 @@ void MyData::Draw(CDC* pDC)
 // Добавление связи в список
 void MyData::addRelation(MyRelation* rel)
 {
+	rel->figure_1 = NULL;
+	rel->figure_2 = NULL;
 	for each (MyFigure* figure in *figures)
 	{
 		if (!rel->figure_1 && figure->isInside(rel->ActionStartPoint))

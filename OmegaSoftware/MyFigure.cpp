@@ -26,7 +26,10 @@ MyFigure::~MyFigure()
 
 void MyFigure::OnMouseMoveReaction()
 {
-	rectangle->SetRect(view->getMouseLeftButtonDOWN(), view->getMouseLeftButtonUP());
+	rectangle->SetRect(min(view->getMouseLeftButtonDOWN().x, view->getMouseLeftButtonUP().x),
+		min(view->getMouseLeftButtonDOWN().y, view->getMouseLeftButtonUP().y),
+		max(view->getMouseLeftButtonDOWN().x, view->getMouseLeftButtonUP().x),
+		max(view->getMouseLeftButtonDOWN().y, view->getMouseLeftButtonUP().y));
 }
 
 
