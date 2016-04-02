@@ -18,5 +18,8 @@ public:
 
 protected:
 	CRect* rectangle;
+public:
+	//Получить координаты центра
+	CPoint getCenterPoint();
 };
 

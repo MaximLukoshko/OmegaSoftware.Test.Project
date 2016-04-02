@@ -28,3 +28,9 @@ void MyFigure::OnMouseMoveReaction()
 {
 	rectangle->SetRect(view->getMouseLeftButtonDOWN(), view->getMouseLeftButtonUP());
 }
+
+
+CPoint MyFigure::getCenterPoint()
+{
+	return rectangle->CenterPoint();
+}
