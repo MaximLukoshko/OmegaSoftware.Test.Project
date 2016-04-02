@@ -1,8 +1,13 @@
 #pragma once
+#include "IDrawable.h"
+#include <list>
 
 class MyFigure;
+class MyRelation;
 
-class MyData
+using namespace std;
+
+class MyData : IDrawable
 {
 public:
 	MyData();
@@ -11,6 +16,12 @@ public:
 protected:
 	/*list<list<MyFigure*> > figures;*/
 public:
-	CList<CList<MyFigure*> >* figures;
+	list<MyFigure*>* figures;
+	list<MyRelation*>* relation;
+	void Draw(CDC* pDC);
+	// Добавление фигуры в список
+	void addFigure(MyFigure* figure);
+	// Добавление связи в список
+	void addRelation(MyRelation* rel);
 };
 

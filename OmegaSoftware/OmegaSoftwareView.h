@@ -60,6 +60,8 @@ public:
 	afx_msg void OnEllipseButton();
 	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
 	afx_msg void OnRelationButton();
+	// изменение действия
+	void setAction(IMyButtonAction* act);
 };
 
 #ifndef _DEBUG  // отладочная версия в OmegaSoftwareView.cpp

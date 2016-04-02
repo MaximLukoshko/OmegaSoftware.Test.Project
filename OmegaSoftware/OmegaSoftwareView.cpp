@@ -70,6 +70,7 @@ void COmegaSoftwareView::OnDraw(CDC* pDC)
 	// TODO: добавьте здесь код отрисовки для собственных данных
 	if (action){
 		pDC->SelectStockObject(NULL_BRUSH);
+		pDoc->getFigureData().Draw(pDC);
 		action->Draw(pDC);
 	}
 }
@@ -147,6 +148,8 @@ void COmegaSoftwareView::OnLButtonUp(UINT nFlags, CPoint point)
 {
 	MouseLeftButtonUP = point;
 	Invalidate();
+	if (action)
+		action->Execute();
 }
 
 
@@ -170,4 +173,11 @@ void COmegaSoftwareView::OnMouseMove(UINT nFlags, CPoint point)
 void COmegaSoftwareView::OnRelationButton()
 {
 	action = new MyRelation(this);
+}
+
+
+// изменение действия
+void COmegaSoftwareView::setAction(IMyButtonAction* act)
+{
+	action = act;
 }

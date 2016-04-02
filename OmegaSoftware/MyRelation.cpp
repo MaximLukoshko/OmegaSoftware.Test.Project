@@ -18,9 +18,15 @@ MyRelation::~MyRelation()
 
 void MyRelation::Execute()
 {
-
+	COmegaSoftwareDoc* pDoc = view->GetDocument();
+	ASSERT_VALID(pDoc);
+	if (!pDoc)
+		return;
+	pDoc->getFigureData().addRelation(this);
+	view->setAction(new MyRelation(view));
 }
 
+// Интерфейс для рисования
 void MyRelation::Draw(CDC* pDC)
 {
 	pDC->MoveTo(ActionStartPoint);

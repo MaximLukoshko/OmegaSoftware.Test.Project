@@ -12,7 +12,7 @@ public:
 	MyFigure();
 	MyFigure(COmegaSoftwareView* v);
 	// Запуск обновления данных
-	void Execute();
+	virtual void Execute();
 	void OnMouseMoveReaction();
 	virtual ~MyFigure();
 

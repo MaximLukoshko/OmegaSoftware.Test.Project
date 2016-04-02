@@ -25,3 +25,9 @@ void MyEllipse::OnMouseMoveReaction()
 {
 	MyFigure::OnMouseMoveReaction();
 }
+
+void MyEllipse::Execute()
+{
+	MyFigure::Execute();
+	view->setAction(new MyEllipse(view));
+}
