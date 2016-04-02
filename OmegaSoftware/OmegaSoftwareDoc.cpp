@@ -35,6 +35,7 @@ COmegaSoftwareDoc::COmegaSoftwareDoc()
 
 COmegaSoftwareDoc::~COmegaSoftwareDoc()
 {
+	delete figuresData;
 }
 
 BOOL COmegaSoftwareDoc::OnNewDocument()
@@ -139,7 +140,7 @@ void COmegaSoftwareDoc::Dump(CDumpContext& dc) const
 
 
 // Получить данные о фигурах
-MyData COmegaSoftwareDoc::getFigureData()
+MyData* COmegaSoftwareDoc::getFigureData()
 {
-	return *figuresData;
+	return figuresData;
 }

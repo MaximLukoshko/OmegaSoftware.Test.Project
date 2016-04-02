@@ -48,6 +48,10 @@ COmegaSoftwareView::COmegaSoftwareView()
 
 COmegaSoftwareView::~COmegaSoftwareView()
 {
+	if (action)
+	{
+		delete action;
+	}
 }
 
 BOOL COmegaSoftwareView::PreCreateWindow(CREATESTRUCT& cs)
@@ -70,7 +74,7 @@ void COmegaSoftwareView::OnDraw(CDC* pDC)
 	// TODO: добавьте здесь код отрисовки для собственных данных
 	if (action){
 		pDC->SelectStockObject(NULL_BRUSH);
-		pDoc->getFigureData().Draw(pDC);
+		pDoc->getFigureData()->Draw(pDC);
 		action->Draw(pDC);
 	}
 }
@@ -134,6 +138,10 @@ CPoint COmegaSoftwareView::getMouseLeftButtonUP()
 
 void COmegaSoftwareView::OnRectangleButton()
 {
+	if (action)
+	{
+		delete action;
+	}
 	action = new MyRectangle(this);
 }
 
@@ -155,6 +163,10 @@ void COmegaSoftwareView::OnLButtonUp(UINT nFlags, CPoint point)
 
 void COmegaSoftwareView::OnEllipseButton()
 {
+	if (action)
+	{
+		delete action;
+	}
 	action = new MyEllipse(this);
 }
 
@@ -172,6 +184,10 @@ void COmegaSoftwareView::OnMouseMove(UINT nFlags, CPoint point)
 
 void COmegaSoftwareView::OnRelationButton()
 {
+	if (action)
+	{
+		delete action;
+	}
 	action = new MyRelation(this);
 }
 
@@ -179,5 +195,9 @@ void COmegaSoftwareView::OnRelationButton()
 // изменение действия
 void COmegaSoftwareView::setAction(IMyButtonAction* act)
 {
+	/*if (action)
+	{
+		delete action;
+	}*/
 	action = act;
 }

@@ -23,7 +23,7 @@ void MyRelation::Execute()
 	ASSERT_VALID(pDoc);
 	if (!pDoc)
 		return;
-	bool completed = pDoc->getFigureData().addRelation(this);
+	bool completed = pDoc->getFigureData()->addRelation(this);
 	if (completed)
 	{
 		view->setAction(new MyRelation(view));

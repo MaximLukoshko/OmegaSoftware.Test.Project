@@ -51,5 +51,5 @@ protected:
 	MyData* figuresData;
 public:
 	// Получить данные о фигурах
-	MyData getFigureData();
+	MyData* getFigureData();
 };

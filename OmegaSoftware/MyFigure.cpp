@@ -17,11 +17,12 @@ void MyFigure::Execute(){
 	ASSERT_VALID(pDoc);
 	if (!pDoc)
 		return;
-	pDoc->getFigureData().addFigure(this);
+	pDoc->getFigureData()->addFigure(this);
 };
 
 MyFigure::~MyFigure()
 {
+	delete rectangle;
 }
 
 void MyFigure::OnMouseMoveReaction()

@@ -13,6 +13,8 @@ MyData::MyData()
 
 MyData::~MyData()
 {
+	delete figures;
+	delete relation;
 }
 
 
