@@ -34,3 +34,9 @@ CPoint MyFigure::getCenterPoint()
 {
 	return rectangle->CenterPoint();
 }
+
+// Проверить, лежит ли точка внутри прямоугольника
+bool MyFigure::isInside(CPoint point)
+{
+	return rectangle->PtInRect(point);
+}

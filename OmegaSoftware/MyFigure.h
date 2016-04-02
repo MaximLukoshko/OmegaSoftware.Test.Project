@@ -21,5 +21,7 @@ protected:
 public:
 	//Получить координаты центра
 	CPoint getCenterPoint();
+	// Проверить, лежит ли точка внутри прямоугольника
+	bool isInside(CPoint point);
 };
 

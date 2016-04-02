@@ -31,3 +31,5 @@ void MyRectangle::Execute()
 	MyFigure::Execute();
 	view->setAction(new MyRectangle(view));
 }
+
+

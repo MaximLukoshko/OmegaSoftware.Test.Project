@@ -9,7 +9,8 @@ MyRelation::MyRelation()
 
 MyRelation::MyRelation(COmegaSoftwareView* v) : MyAction(v)
 {
-
+	figure_1 = NULL;
+	figure_2 = NULL;
 }
 
 MyRelation::~MyRelation()
