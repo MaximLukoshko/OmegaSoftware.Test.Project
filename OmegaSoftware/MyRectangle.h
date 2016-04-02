@@ -9,10 +9,12 @@ public:
 	MyRectangle();
 	MyRectangle(COmegaSoftwareView* v);
 	~MyRectangle();
-	// Запуск обновления данных
-	void Execute();
 	// Прорисовка самой фигуры	
 	void Draw(CDC* pDC);
+	// Запуск обновления данных
+	void Execute();
+	void OnMouseMoveReaction();
+
 };
 
 

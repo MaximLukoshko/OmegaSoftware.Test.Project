@@ -15,12 +15,21 @@ MyRectangle::~MyRectangle()
 {
 }
 
-void MyRectangle::Execute(){
-
-};
-
 // Прорисовка самой фигуры	
 void MyRectangle::Draw(CDC* pDC){
-	rectangle->SetRect(view->getMouseLeftButtonDOWN(), view->getMouseLeftButtonUP());
+	/*rectangle->SetRect(view->getMouseLeftButtonDOWN(), view->getMouseLeftButtonUP());*/
 	pDC->Rectangle(rectangle);
 }
+
+void MyRectangle::OnMouseMoveReaction()
+{
+	MyFigure::OnMouseMoveReaction();
+}
+
+void MyRectangle::Execute()
+{
+	MyFigure::Execute();
+	view->setAction(new MyRectangle(view));
+}
+
+

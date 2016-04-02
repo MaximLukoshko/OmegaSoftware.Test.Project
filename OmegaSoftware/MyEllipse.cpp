@@ -15,12 +15,19 @@ MyEllipse::~MyEllipse()
 {
 }
 
-void MyEllipse::Execute(){
-
-};
 
 // Прорисовка самой фигуры	
 void MyEllipse::Draw(CDC* pDC){
-	rectangle->SetRect(view->getMouseLeftButtonDOWN(), view->getMouseLeftButtonUP());
 	pDC->Ellipse(rectangle);
+}
+
+void MyEllipse::OnMouseMoveReaction()
+{
+	MyFigure::OnMouseMoveReaction();
+}
+
+void MyEllipse::Execute()
+{
+	MyFigure::Execute();
+	view->setAction(new MyEllipse(view));
 }

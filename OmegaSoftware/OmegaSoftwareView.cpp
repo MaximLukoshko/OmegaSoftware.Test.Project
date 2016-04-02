@@ -14,6 +14,7 @@
 
 #include "MyRectangle.h"
 #include "MyEllipse.h"
+#include "MyRelation.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -34,6 +35,7 @@ BEGIN_MESSAGE_MAP(COmegaSoftwareView, CView)
 	ON_WM_LBUTTONUP()
 	ON_COMMAND(ID_ELLIPSE_BUTTON, &COmegaSoftwareView::OnEllipseButton)
 	ON_WM_MOUSEMOVE()
+	ON_COMMAND(ID_RELATION_BUTTON, &COmegaSoftwareView::OnRelationButton)
 END_MESSAGE_MAP()
 
 // создание/уничтожение COmegaSoftwareView
@@ -46,6 +48,10 @@ COmegaSoftwareView::COmegaSoftwareView()
 
 COmegaSoftwareView::~COmegaSoftwareView()
 {
+	if (action)
+	{
+		delete action;
+	}
 }
 
 BOOL COmegaSoftwareView::PreCreateWindow(CREATESTRUCT& cs)
@@ -68,6 +74,7 @@ void COmegaSoftwareView::OnDraw(CDC* pDC)
 	// TODO: добавьте здесь код отрисовки для собственных данных
 	if (action){
 		pDC->SelectStockObject(NULL_BRUSH);
+		pDoc->getFigureData()->Draw(pDC);
 		action->Draw(pDC);
 	}
 }
@@ -131,6 +138,10 @@ CPoint COmegaSoftwareView::getMouseLeftButtonUP()
 
 void COmegaSoftwareView::OnRectangleButton()
 {
+	if (action)
+	{
+		delete action;
+	}
 	action = new MyRectangle(this);
 }
 
@@ -145,11 +156,17 @@ void COmegaSoftwareView::OnLButtonUp(UINT nFlags, CPoint point)
 {
 	MouseLeftButtonUP = point;
 	Invalidate();
+	if (action)
+		action->Execute();
 }
 
 
 void COmegaSoftwareView::OnEllipseButton()
 {
+	if (action)
+	{
+		delete action;
+	}
 	action = new MyEllipse(this);
 }
 
@@ -157,8 +174,30 @@ void COmegaSoftwareView::OnEllipseButton()
 void COmegaSoftwareView::OnMouseMove(UINT nFlags, CPoint point)
 {
 	// TODO: добавьте свой код обработчика сообщений или вызов стандартного
-	if (nFlags&MK_RBUTTON == MK_RBUTTON){
+	if (((nFlags & MK_LBUTTON) == MK_LBUTTON) && action){
 		MouseLeftButtonUP = point;
+		action->OnMouseMoveReaction();
 		Invalidate();
 	}
+}
+
+
+void COmegaSoftwareView::OnRelationButton()
+{
+	if (action)
+	{
+		delete action;
+	}
+	action = new MyRelation(this);
+}
+
+
+// изменение действия
+void COmegaSoftwareView::setAction(IMyButtonAction* act)
+{
+	/*if (action)
+	{
+		delete action;
+	}*/
+	action = act;
 }

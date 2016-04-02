@@ -4,7 +4,9 @@
 
 
 #pragma once
+#include "MyData.h"
 
+class MyData;
 
 class COmegaSoftwareDoc : public CDocument
 {
@@ -45,4 +47,9 @@ protected:
 	// Вспомогательная функция, задающая содержимое поиска для обработчика поиска
 	void SetSearchContent(const CString& value);
 #endif // SHARED_HANDLERS
+	// Хранение фигур
+	MyData* figuresData;
+public:
+	// Получить данные о фигурах
+	MyData* getFigureData();
 };
