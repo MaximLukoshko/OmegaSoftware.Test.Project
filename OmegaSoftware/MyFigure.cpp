@@ -19,3 +19,7 @@ MyFigure::~MyFigure()
 {
 }
 
+void MyFigure::OnMouseMoveReaction()
+{
+	rectangle->SetRect(view->getMouseLeftButtonDOWN(), view->getMouseLeftButtonUP());
+}

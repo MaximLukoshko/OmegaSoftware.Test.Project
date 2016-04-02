@@ -11,6 +11,7 @@ public:
 	~MyRectangle();
 	// Прорисовка самой фигуры	
 	void Draw(CDC* pDC);
+	void OnMouseMoveReaction();
 };
 
 

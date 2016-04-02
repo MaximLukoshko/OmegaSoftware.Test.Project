@@ -18,6 +18,10 @@ MyEllipse::~MyEllipse()
 
 // Прорисовка самой фигуры	
 void MyEllipse::Draw(CDC* pDC){
-	rectangle->SetRect(view->getMouseLeftButtonDOWN(), view->getMouseLeftButtonUP());
 	pDC->Ellipse(rectangle);
+}
+
+void MyEllipse::OnMouseMoveReaction()
+{
+	MyFigure::OnMouseMoveReaction();
 }

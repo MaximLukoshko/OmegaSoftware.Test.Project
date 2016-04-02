@@ -9,10 +9,10 @@ public:
 	MyAction();
 	MyAction(COmegaSoftwareView* view);
 	virtual ~MyAction();
-/*protected:
+protected:
 	// Позиция начала действия
-	CPoint* ActionStartPoint;
+	CPoint ActionStartPoint;
 	// Позиция завершения действия
-	CPoint* ActionStopPoint;*/
+	CPoint ActionStopPoint;
 };
 

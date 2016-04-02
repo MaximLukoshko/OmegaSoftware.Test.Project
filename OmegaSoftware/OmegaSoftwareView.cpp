@@ -159,8 +159,9 @@ void COmegaSoftwareView::OnEllipseButton()
 void COmegaSoftwareView::OnMouseMove(UINT nFlags, CPoint point)
 {
 	// TODO: добавьте свой код обработчика сообщений или вызов стандартного
-	if ((nFlags & MK_RBUTTON) == MK_RBUTTON){
+	if (((nFlags & MK_LBUTTON) == MK_LBUTTON) && action){
 		MouseLeftButtonUP = point;
+		action->OnMouseMoveReaction();
 		Invalidate();
 	}
 }

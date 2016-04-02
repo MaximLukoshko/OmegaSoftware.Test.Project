@@ -13,7 +13,9 @@ public:
 	MyFigure(COmegaSoftwareView* v);
 	// Запуск обновления данных
 	void Execute();
+	void OnMouseMoveReaction();
 	virtual ~MyFigure();
+
 protected:
 	CRect* rectangle;
 };

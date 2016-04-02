@@ -13,5 +13,7 @@ public:
 	void Execute();
 	// Прорисовка линии
 	void Draw(CDC* pDC);
+
+	void OnMouseMoveReaction();
 };
 

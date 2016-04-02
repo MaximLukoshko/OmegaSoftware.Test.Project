@@ -18,5 +18,7 @@ public:
 	virtual void Execute() = 0;
 	// Прорисовка самой фигуры	
 	virtual void Draw(CDC* pDC) = 0;
+	// Реакция действия на движение мыши
+	virtual void OnMouseMoveReaction() = 0;
 };
 

@@ -23,6 +23,12 @@ void MyRelation::Execute()
 
 void MyRelation::Draw(CDC* pDC)
 {
-	pDC->MoveTo(view->getMouseLeftButtonDOWN());
-	pDC->LineTo(view->getMouseLeftButtonUP());
+	pDC->MoveTo(ActionStartPoint);
+	pDC->LineTo(ActionStopPoint);
+}
+
+void MyRelation::OnMouseMoveReaction()
+{
+	ActionStartPoint = view->getMouseLeftButtonDOWN();
+	ActionStopPoint = view->getMouseLeftButtonUP();
 }
