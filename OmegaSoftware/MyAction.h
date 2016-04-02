@@ -8,6 +8,7 @@ class MyAction :
 public:
 	MyAction();
 	MyAction(COmegaSoftwareView* view);
+	void OnMouseMoveReaction();
 	virtual ~MyAction();
 protected:
 	// Позиция начала действия

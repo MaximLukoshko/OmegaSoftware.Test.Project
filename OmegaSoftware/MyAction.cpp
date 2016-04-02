@@ -18,3 +18,9 @@ MyAction::MyAction(COmegaSoftwareView* v):IMyButtonAction(v)
 MyAction::~MyAction()
 {
 }
+
+void MyAction::OnMouseMoveReaction()
+{
+	ActionStartPoint = view->getMouseLeftButtonDOWN();
+	ActionStopPoint = view->getMouseLeftButtonUP();
+}

@@ -155,9 +155,9 @@ void COmegaSoftwareView::OnLButtonDown(UINT nFlags, CPoint point)
 void COmegaSoftwareView::OnLButtonUp(UINT nFlags, CPoint point)
 {
 	MouseLeftButtonUP = point;
-	Invalidate();
 	if (action)
 		action->Execute();
+	Invalidate();
 }
 
 
