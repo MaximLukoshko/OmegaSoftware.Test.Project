@@ -23,7 +23,7 @@ void MyHand::Execute()
 	if (!pDoc)
 		return;
 	bool completed = pDoc->getFigureData()->moveFigure(ActionStartPoint, ActionStopPoint);
-	ActionStartPoint = ActionStopPoint = NULL;
+	ActionStartPoint = ActionStopPoint = CPoint(-10,-10);
 }
 
 // Прорисовка линии
