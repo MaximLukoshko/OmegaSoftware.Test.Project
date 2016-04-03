@@ -60,6 +60,7 @@ void COmegaSoftwareDoc::Serialize(CArchive& ar)
 	if (ar.IsStoring())
 	{
 		// TODO: добавьте код сохранения
+		//ar << CString("Hey, Hello here)");
 	}
 	else
 	{

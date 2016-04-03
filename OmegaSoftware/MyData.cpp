@@ -21,7 +21,7 @@ MyData::~MyData()
 // Добавление фигуры в список
 bool MyData::addFigure(MyFigure* figure)
 {
-	figures->push_back(figure);
+	figures->push_front(figure);
 	return true;
 }
 

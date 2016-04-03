@@ -254,6 +254,7 @@ END
 STRINGTABLE
 BEGIN
     IDP_OLE_INIT_FAILED     "Не удалось выполнить инициализацию OLE.  Убедитесь в том, что используются правильные версии библиотек OLE."
+    AFX_IDC_ALLFILTER       "*.my"
 END
 
 STRINGTABLE
@@ -368,6 +369,8 @@ END
 
 STRINGTABLE
 BEGIN
+    IDS_TITLE               "Сохранить проект"
+    AFX_IDS_UNTITLED        "MySave.my"
     AFX_IDS_PREVIEW_CLOSE   "Выход из режима предварительного просмотра\nОтменить просмотр"
 END
 
