@@ -8,6 +8,7 @@ class COmegaSoftwareView;
 class MyFigure : 
 	public IMyButtonAction
 {
+	friend bool MyData::moveFigure(CPoint ActionStartPoint, CPoint ActionStopPoint);
 public:
 	MyFigure();
 	MyFigure(COmegaSoftwareView* v);

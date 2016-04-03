@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "MyRelation.h"
+#include "MyFigure.h"
 #include "MyAction.h"
 #include "OmegaSoftwareView.h"
 
@@ -30,6 +31,7 @@ void MyRelation::Execute()
 	}
 	else
 	{
+		figure_1 = figure_2 = NULL;
 		ActionStartPoint = ActionStopPoint = CPoint();
 	}
 }
@@ -37,12 +39,16 @@ void MyRelation::Execute()
 // Интерфейс для рисования
 void MyRelation::Draw(CDC* pDC)
 {
+	if (figure_1 && figure_2)
+	{
+		ActionStartPoint = figure_1->getCenterPoint();
+		ActionStopPoint = figure_2->getCenterPoint();
+	}
 	pDC->MoveTo(ActionStartPoint);
 	pDC->LineTo(ActionStopPoint);
 }
 
 void MyRelation::OnMouseMoveReaction()
 {
-	ActionStartPoint = view->getMouseLeftButtonDOWN();
-	ActionStopPoint = view->getMouseLeftButtonUP();
+	MyAction::OnMouseMoveReaction();
 }

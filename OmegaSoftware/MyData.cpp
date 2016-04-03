@@ -45,12 +45,12 @@ bool MyData::addRelation(MyRelation* rel)
 	rel->figure_2 = NULL;
 	for each (MyFigure* figure in *figures)
 	{
-		if (!rel->figure_1 && figure->isInside(rel->ActionStartPoint))
+		if ((rel->figure_1==NULL) && figure->isInside(rel->ActionStartPoint))
 		{
 			rel->figure_1 = figure;
 		}
 
-		if (!rel->figure_2 && figure->isInside(rel->ActionStopPoint))
+		if ((rel->figure_2 == NULL) && figure->isInside(rel->ActionStopPoint))
 		{
 			rel->figure_2 = figure;
 		}
@@ -59,9 +59,10 @@ bool MyData::addRelation(MyRelation* rel)
 			break;
 		}
 	}
+
 	for each (MyRelation* relat in *relation)
 	{
-		if (relat->figure_1 == rel->figure_1 && relat->figure_2 == rel->figure_2)
+		if ((relat->figure_1 == rel->figure_1) && (relat->figure_2 == rel->figure_2))
 		{
 			return false;
 		}
@@ -73,5 +74,34 @@ bool MyData::addRelation(MyRelation* rel)
 		rel->ActionStopPoint = rel->figure_2->getCenterPoint();
 		relation->push_back(rel);
 		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+
+bool MyData::moveFigure(CPoint ActionStartPoint, CPoint ActionStopPoint)
+{
+	MyFigure* movingFigure = NULL;
+	for each (MyFigure* figure in *figures)
+	{
+		if (figure->isInside(ActionStartPoint))
+		{
+			movingFigure = figure;
+			break;
+		}
+	}
+
+	if (movingFigure)
+	{
+		movingFigure->rectangle->MoveToXY(movingFigure->rectangle->left - ActionStartPoint.x + ActionStopPoint.x, 
+			movingFigure->rectangle->top - ActionStartPoint.y + ActionStopPoint.y);
+		return true;
+	}
+	else
+	{
+		return false;
 	}
 }

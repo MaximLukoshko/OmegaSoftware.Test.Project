@@ -15,6 +15,7 @@
 #include "MyRectangle.h"
 #include "MyEllipse.h"
 #include "MyRelation.h"
+#include "MyHand.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -36,6 +37,7 @@ BEGIN_MESSAGE_MAP(COmegaSoftwareView, CView)
 	ON_COMMAND(ID_ELLIPSE_BUTTON, &COmegaSoftwareView::OnEllipseButton)
 	ON_WM_MOUSEMOVE()
 	ON_COMMAND(ID_RELATION_BUTTON, &COmegaSoftwareView::OnRelationButton)
+	ON_COMMAND(ID_HAND_BUTTON, &COmegaSoftwareView::OnHandButton)
 END_MESSAGE_MAP()
 
 // создание/уничтожение COmegaSoftwareView
@@ -155,9 +157,9 @@ void COmegaSoftwareView::OnLButtonDown(UINT nFlags, CPoint point)
 void COmegaSoftwareView::OnLButtonUp(UINT nFlags, CPoint point)
 {
 	MouseLeftButtonUP = point;
-	Invalidate();
 	if (action)
 		action->Execute();
+	Invalidate();
 }
 
 
@@ -200,4 +202,14 @@ void COmegaSoftwareView::setAction(IMyButtonAction* act)
 		delete action;
 	}*/
 	action = act;
+}
+
+
+void COmegaSoftwareView::OnHandButton()
+{
+	if (action)
+	{
+		delete action;
+	}
+	action = new MyHand(this);
 }
