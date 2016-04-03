@@ -80,3 +80,28 @@ bool MyData::addRelation(MyRelation* rel)
 		return false;
 	}
 }
+
+
+bool MyData::moveFigure(CPoint ActionStartPoint, CPoint ActionStopPoint)
+{
+	MyFigure* movingFigure = NULL;
+	for each (MyFigure* figure in *figures)
+	{
+		if (figure->isInside(ActionStartPoint))
+		{
+			movingFigure = figure;
+			break;
+		}
+	}
+
+	if (movingFigure)
+	{
+		movingFigure->rectangle->MoveToXY(movingFigure->rectangle->left - ActionStartPoint.x + ActionStopPoint.x, 
+			movingFigure->rectangle->top - ActionStartPoint.y + ActionStopPoint.y);
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}

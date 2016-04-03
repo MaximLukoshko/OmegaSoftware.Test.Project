@@ -23,5 +23,8 @@ public:
 	bool addFigure(MyFigure* figure);
 	// Добавление связи в список
 	bool addRelation(MyRelation* rel);
+	//Перемещение фигуры
+	bool moveFigure(CPoint ActionStartPoint, CPoint ActionStopPoint);
+
 };
 

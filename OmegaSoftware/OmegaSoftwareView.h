@@ -62,6 +62,7 @@ public:
 	afx_msg void OnRelationButton();
 	// изменение действия
 	void setAction(IMyButtonAction* act);
+	afx_msg void OnHandButton();
 };
 
 #ifndef _DEBUG  // отладочная версия в OmegaSoftwareView.cpp
