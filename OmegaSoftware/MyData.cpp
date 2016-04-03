@@ -105,3 +105,15 @@ bool MyData::moveFigure(CPoint ActionStartPoint, CPoint ActionStopPoint)
 		return false;
 	}
 }
+
+void MyData::Serialize(CArchive& archive)
+{
+	for each (MyFigure* figure in *figures)
+	{
+		figure->Serialize(archive);
+	}
+	for each (MyRelation* rel in *relation)
+	{
+		rel->Serialize(archive);
+	}
+}

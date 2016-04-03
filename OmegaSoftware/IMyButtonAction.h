@@ -17,9 +17,10 @@ public:
 
 	// Запуск обновления данных
 	virtual void Execute() = 0;
-	// Прорисовка самой фигуры	
-	//virtual void Draw(CDC* pDC) = 0;
 	// Реакция действия на движение мыши
 	virtual void OnMouseMoveReaction() = 0;
+	virtual void Serialize(CArchive& archive);
+	//Код класса для сериализации
+	virtual int getClassCode() = 0;
 };
 

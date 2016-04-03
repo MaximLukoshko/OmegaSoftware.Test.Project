@@ -52,3 +52,8 @@ void MyRelation::OnMouseMoveReaction()
 {
 	MyAction::OnMouseMoveReaction();
 }
+
+int MyRelation::getClassCode()
+{
+	return MY_RELATION;
+}

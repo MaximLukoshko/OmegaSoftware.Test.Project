@@ -57,15 +57,7 @@ BOOL COmegaSoftwareDoc::OnNewDocument()
 
 void COmegaSoftwareDoc::Serialize(CArchive& ar)
 {
-	if (ar.IsStoring())
-	{
-		// TODO: добавьте код сохранения
-		//ar << CString("Hey, Hello here)");
-	}
-	else
-	{
-		// TODO: добавьте код загрузки
-	}
+		figuresData->Serialize(ar);
 }
 
 #ifdef SHARED_HANDLERS

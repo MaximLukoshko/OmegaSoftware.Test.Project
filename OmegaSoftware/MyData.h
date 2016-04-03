@@ -7,9 +7,8 @@ class MyRelation;
 
 using namespace std;
 
-class MyData : IDrawable
+class MyData : public IDrawable
 {
-
 public:
 	MyData();
 	~MyData();
@@ -25,6 +24,8 @@ public:
 	bool addRelation(MyRelation* rel);
 	//Перемещение фигуры
 	bool moveFigure(CPoint ActionStartPoint, CPoint ActionStopPoint);
+
+	virtual void Serialize(CArchive& archive);
 
 };
 

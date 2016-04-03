@@ -31,3 +31,8 @@ void MyEllipse::Execute()
 	MyFigure::Execute();
 	view->setAction(new MyEllipse(view));
 }
+
+int MyEllipse::getClassCode()
+{
+	return MY_ELLIPSE;
+}

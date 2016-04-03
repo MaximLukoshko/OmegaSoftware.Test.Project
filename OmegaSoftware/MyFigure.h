@@ -24,5 +24,6 @@ public:
 	CPoint getCenterPoint();
 	// Проверить, лежит ли точка внутри прямоугольника
 	bool isInside(CPoint point);
+	virtual void Serialize(CArchive& archive);
 };
 

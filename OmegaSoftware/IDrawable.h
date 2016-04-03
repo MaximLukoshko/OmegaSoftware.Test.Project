@@ -1,6 +1,18 @@
 #pragma once
-class IDrawable
+class IDrawable : public CObject
 {
+protected:
+	//Перечисление всех возможных классов
+	enum
+	{
+		//Actions
+		MY_RELATION,
+		MY_HAND,
+
+		//Figures
+		MY_RECTANGLE,
+		MY_ELLIPSE
+	};
 public:
 	IDrawable();
 	virtual ~IDrawable();

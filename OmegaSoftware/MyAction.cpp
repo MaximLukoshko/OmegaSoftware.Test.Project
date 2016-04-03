@@ -24,3 +24,9 @@ void MyAction::OnMouseMoveReaction()
 	ActionStartPoint = view->getMouseLeftButtonDOWN();
 	ActionStopPoint = view->getMouseLeftButtonUP();
 }
+
+void MyAction::Serialize(CArchive& archive)
+{
+	IMyButtonAction::Serialize(archive);
+	archive << ActionStartPoint.x << ActionStartPoint.y << ActionStopPoint.x << ActionStopPoint.y;
+}

@@ -44,3 +44,15 @@ bool MyFigure::isInside(CPoint point)
 {
 	return rectangle->PtInRect(point);
 }
+
+void MyFigure::Serialize(CArchive& archive)
+{
+	IMyButtonAction::Serialize(archive);
+	if (archive.IsStoring()){
+		archive << rectangle->left << rectangle->top << rectangle->right << rectangle->bottom;
+	}
+	else
+	{
+		archive >> rectangle->left >> rectangle->top >> rectangle->right >> rectangle->bottom;
+	}
+}

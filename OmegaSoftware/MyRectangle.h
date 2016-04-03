@@ -14,7 +14,7 @@ public:
 	// Запуск обновления данных
 	void Execute();
 	void OnMouseMoveReaction();
-
+	int getClassCode();
 };
 
 

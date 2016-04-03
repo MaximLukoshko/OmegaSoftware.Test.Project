@@ -24,5 +24,6 @@ public:
 	void OnMouseMoveReaction();
 
 	friend bool MyData::addRelation(MyRelation* rel);
+	int getClassCode();
 };
 

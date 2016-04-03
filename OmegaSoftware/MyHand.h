@@ -14,5 +14,6 @@ public:
 	// Прорисовка линии
 	void Draw(CDC* pDC);
 	void OnMouseMoveReaction();
+	int getClassCode();
 };
 

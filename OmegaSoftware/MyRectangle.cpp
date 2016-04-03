@@ -33,3 +33,7 @@ void MyRectangle::Execute()
 }
 
 
+int MyRectangle::getClassCode()
+{
+	return MY_RECTANGLE;
+}

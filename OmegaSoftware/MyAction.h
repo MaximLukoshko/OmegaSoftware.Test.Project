@@ -9,6 +9,7 @@ public:
 	MyAction();
 	MyAction(COmegaSoftwareView* view);
 	void OnMouseMoveReaction();
+	virtual void Serialize(CArchive& archive);
 	virtual ~MyAction();
 protected:
 	// Позиция начала действия

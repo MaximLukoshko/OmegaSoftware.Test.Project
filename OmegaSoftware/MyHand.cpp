@@ -39,3 +39,8 @@ void MyHand::OnMouseMoveReaction()
 {
 	MyAction::OnMouseMoveReaction();
 }
+
+int MyHand::getClassCode()
+{
+	return MY_HAND;
+}
