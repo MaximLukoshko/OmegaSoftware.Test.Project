@@ -21,9 +21,6 @@ public:
 	IMyButtonAction* Execute(MyData* figureData);
 	// Прорисовка линии
 	void Draw(CDC* pDC);
-	//void OnMouseMoveReaction(CPoint StartPoint, CPoint StopPoint);
-
 	friend bool MyData::addRelation(MyRelation* rel);
-	int getClassCode();
 };
 

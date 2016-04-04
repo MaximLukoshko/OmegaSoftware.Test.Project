@@ -38,7 +38,7 @@ BEGIN_MESSAGE_MAP(COmegaSoftwareView, CView)
 	ON_WM_MOUSEMOVE()
 	ON_COMMAND(ID_RELATION_BUTTON, &COmegaSoftwareView::OnRelationButton)
 	ON_COMMAND(ID_HAND_BUTTON, &COmegaSoftwareView::OnHandButton)
-//	ON_COMMAND(ID_FILE_SAVE, &COmegaSoftwareView::OnFileSave)
+
 END_MESSAGE_MAP()
 
 // создание/уничтожение COmegaSoftwareView

@@ -99,8 +99,8 @@ bool MyData::moveFigure(CPoint ActionStartPoint, CPoint ActionStopPoint)
 
 	if (movingFigure)
 	{
-		movingFigure->rectangle->MoveToXY(movingFigure->rectangle->left - ActionStartPoint.x + ActionStopPoint.x, 
-			movingFigure->rectangle->top - ActionStartPoint.y + ActionStopPoint.y);
+		movingFigure->rectangle.MoveToXY(movingFigure->rectangle.left - ActionStartPoint.x + ActionStopPoint.x, 
+			movingFigure->rectangle.top - ActionStartPoint.y + ActionStopPoint.y);
 		return true;
 	}
 	else

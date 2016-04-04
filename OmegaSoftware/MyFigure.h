@@ -11,14 +11,13 @@ class MyFigure :
 	friend bool MyData::moveFigure(CPoint ActionStartPoint, CPoint ActionStopPoint);
 public:
 	MyFigure();
-	MyFigure(COmegaSoftwareView* v);
 	// Запуск обновления данных
 	virtual IMyButtonAction* Execute(MyData* figureData);
 	void OnMouseMoveReaction(CPoint StartPoint, CPoint StopPoint);
 	virtual ~MyFigure();
 
 protected:
-	CRect* rectangle;
+	CRect rectangle;
 public:
 	//Получить координаты центра
 	CPoint getCenterPoint();

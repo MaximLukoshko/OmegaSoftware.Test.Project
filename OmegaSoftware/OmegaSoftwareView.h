@@ -62,7 +62,6 @@ public:
 	afx_msg void OnEllipseButton();
 	afx_msg void OnRelationButton();
 	afx_msg void OnHandButton();
-//	afx_msg void OnFileSave();
 };
 
 #ifndef _DEBUG  // отладочная версия в OmegaSoftwareView.cpp

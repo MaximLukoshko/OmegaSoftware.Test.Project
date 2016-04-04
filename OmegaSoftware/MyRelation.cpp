@@ -11,12 +11,6 @@ MyRelation::MyRelation()
 	classCode = MY_RELATION;
 }
 
-MyRelation::MyRelation(COmegaSoftwareView* v) : MyAction(v)
-{
-	figure_1 = NULL;
-	figure_2 = NULL;
-}
-
 MyRelation::~MyRelation()
 {
 }
@@ -47,15 +41,4 @@ void MyRelation::Draw(CDC* pDC)
 	}
 	pDC->MoveTo(ActionStartPoint);
 	pDC->LineTo(ActionStopPoint);
-}
-/*
-void MyRelation::OnMouseMoveReaction(CPoint StartPoint, CPoint StopPoint)
-{
-	MyAction::OnMouseMoveReaction();
-}
-*/
-
-int MyRelation::getClassCode()
-{
-	return MY_RELATION;
 }

@@ -4,10 +4,7 @@
 
 MyHand::MyHand()
 {
-}
-
-MyHand::MyHand(COmegaSoftwareView* v) :MyAction(v)
-{
+	classCode = MY_HAND;
 }
 
 MyHand::~MyHand()
@@ -30,15 +27,4 @@ void MyHand::Draw(CDC* pDC)
 	pDC->MoveTo(ActionStartPoint);
 	pDC->LineTo(ActionStopPoint);
 	pDC->Ellipse(ActionStopPoint.x - 3, ActionStopPoint.y - 3, ActionStopPoint.x + 3, ActionStopPoint.y + 3);
-}
-/*
-void MyHand::OnMouseMoveReaction()
-{
-	MyAction::OnMouseMoveReaction();
-}
-*/
-
-int MyHand::getClassCode()
-{
-	return MY_HAND;
 }
