@@ -52,4 +52,8 @@ protected:
 public:
 	// Получить данные о фигурах
 	MyData* getFigureData();
+protected:
+	COmegaSoftwareView* activeView;
+public:
+//	void setView(COmegaSoftwareView* v);
 };

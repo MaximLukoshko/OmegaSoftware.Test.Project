@@ -11,8 +11,5 @@ public:
 	~MyEllipse();
 	// Прорисовка самой фигуры	
 	void Draw(CDC* pDC);
-	// Запуск обновления данных
-	void Execute();
-	void OnMouseMoveReaction();
 };
 

@@ -18,9 +18,15 @@ MyAction::MyAction(COmegaSoftwareView* v):IMyButtonAction(v)
 MyAction::~MyAction()
 {
 }
-
-void MyAction::OnMouseMoveReaction()
+/*
+void MyAction::OnMouseMoveReaction(CPoint StartPoint, CPoint StopPoint)
 {
-	ActionStartPoint = view->getMouseLeftButtonDOWN();
-	ActionStopPoint = view->getMouseLeftButtonUP();
+	IMyButtonAction::OnMouseMoveReaction
+}
+*/
+
+void MyAction::Serialize(CArchive& archive)
+{
+	IMyButtonAction::Serialize(archive);
+	archive << ActionStartPoint.x << ActionStartPoint.y << ActionStopPoint.x << ActionStopPoint.y;
 }

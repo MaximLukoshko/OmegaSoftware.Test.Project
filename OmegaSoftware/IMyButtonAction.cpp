@@ -2,7 +2,7 @@
 #include "IMyButtonAction.h"
 
 
-IMyButtonAction::IMyButtonAction(COmegaSoftwareView* v) : view(v)
+IMyButtonAction::IMyButtonAction(COmegaSoftwareView* v)
 {
 
 }
@@ -13,4 +13,27 @@ IMyButtonAction::IMyButtonAction()
 
 IMyButtonAction::~IMyButtonAction()
 {
+}
+
+void IMyButtonAction::OnMouseMoveReaction(CPoint StartPoint, CPoint StopPoint)
+{
+	ActionStartPoint = StartPoint;
+	ActionStopPoint = StopPoint;
+}
+
+void IMyButtonAction::Serialize(CArchive& archive)
+{
+	if (archive.IsStoring())
+	{
+		archive << this->getClassCode();
+	}
+	else
+	{
+
+	}
+}
+
+int IMyButtonAction::getClassCode()
+{
+	return classCode;
 }

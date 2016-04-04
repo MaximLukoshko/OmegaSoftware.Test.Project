@@ -1,15 +1,11 @@
 #include "stdafx.h"
 #include "MyRectangle.h"
 
-MyRectangle::MyRectangle()
+MyRectangle::MyRectangle() :MyFigure()
 {
+	//rectangle = new CRect();
+	classCode = MY_RECTANGLE;
 }
-
-MyRectangle::MyRectangle(COmegaSoftwareView* v) :MyFigure(v)
-{
-	rectangle = new CRect();
-}
-
 
 MyRectangle::~MyRectangle()
 {
@@ -17,19 +13,5 @@ MyRectangle::~MyRectangle()
 
 // Прорисовка самой фигуры	
 void MyRectangle::Draw(CDC* pDC){
-	/*rectangle->SetRect(view->getMouseLeftButtonDOWN(), view->getMouseLeftButtonUP());*/
 	pDC->Rectangle(rectangle);
 }
-
-void MyRectangle::OnMouseMoveReaction()
-{
-	MyFigure::OnMouseMoveReaction();
-}
-
-void MyRectangle::Execute()
-{
-	MyFigure::Execute();
-	view->setAction(new MyRectangle(view));
-}
-
-

@@ -2,6 +2,9 @@
 #include "MyData.h"
 #include "MyFigure.h"
 #include "MyRelation.h"
+#include "MyRectangle.h"
+#include "MyEllipse.h"
+#include "MyHand.h"
 
 
 MyData::MyData()
@@ -21,7 +24,7 @@ MyData::~MyData()
 // Добавление фигуры в список
 bool MyData::addFigure(MyFigure* figure)
 {
-	figures->push_back(figure);
+	figures->push_front(figure);
 	return true;
 }
 
@@ -96,12 +99,80 @@ bool MyData::moveFigure(CPoint ActionStartPoint, CPoint ActionStopPoint)
 
 	if (movingFigure)
 	{
-		movingFigure->rectangle->MoveToXY(movingFigure->rectangle->left - ActionStartPoint.x + ActionStopPoint.x, 
-			movingFigure->rectangle->top - ActionStartPoint.y + ActionStopPoint.y);
+		movingFigure->rectangle.MoveToXY(movingFigure->rectangle.left - ActionStartPoint.x + ActionStopPoint.x, 
+			movingFigure->rectangle.top - ActionStartPoint.y + ActionStopPoint.y);
 		return true;
 	}
 	else
 	{
 		return false;
+	}
+}
+
+void MyData::Serialize(CArchive& archive)
+{
+	if (archive.IsStoring())
+	{
+		archive << static_cast<int>(figures->size());
+		for each (MyFigure* figure in *figures)
+		{
+			figure->Serialize(archive);
+		}
+		archive << static_cast<int>(relation->size());
+		for each (MyRelation* rel in *relation)
+		{
+			rel->Serialize(archive);
+		}
+	}
+	else
+	{
+		int numFigures;
+		archive >> numFigures;
+		while (numFigures > 0)
+		{
+			int classCode;
+			archive >> classCode;
+			MyFigure* fig = getFigureByClassCode(classCode);
+			fig->Serialize(archive);
+			figures->push_back(fig);
+			numFigures--;
+		}
+		int numRelation;
+		archive >> numRelation;
+		while (numRelation > 0)
+		{
+			int classCode;
+			archive >> classCode;
+			MyRelation* rel = new MyRelation();
+			rel->Serialize(archive);
+			addRelation(rel);
+			numRelation--;
+		}
+	}
+}
+
+MyFigure* MyData::getFigureByClassCode(int classCode)
+{
+	switch (classCode)
+	{
+	case MY_RECTANGLE:
+		return new MyRectangle();
+	case MY_ELLIPSE:
+		return new MyEllipse();
+	default:
+		return NULL;
+	}
+}
+
+MyAction* MyData::getActionByClassCode(int classCode)
+{
+	switch (classCode)
+	{
+	case MY_RELATION:
+		return new MyRelation();
+	case MY_HAND:
+		return new MyHand();
+	default:
+		return NULL;
 	}
 }

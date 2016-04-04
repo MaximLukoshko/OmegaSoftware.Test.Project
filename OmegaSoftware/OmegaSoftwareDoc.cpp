@@ -28,6 +28,7 @@ END_MESSAGE_MAP()
 // создание/уничтожение COmegaSoftwareDoc
 
 COmegaSoftwareDoc::COmegaSoftwareDoc()
+: activeView(NULL)
 {
 	// TODO: добавьте код для одноразового вызова конструктора
 
@@ -44,6 +45,7 @@ BOOL COmegaSoftwareDoc::OnNewDocument()
 		return FALSE;
 
 	figuresData = new MyData();
+
 	// TODO: добавьте код повторной инициализации
 	// (Документы SDI будут повторно использовать этот документ)
 
@@ -57,14 +59,16 @@ BOOL COmegaSoftwareDoc::OnNewDocument()
 
 void COmegaSoftwareDoc::Serialize(CArchive& ar)
 {
-	if (ar.IsStoring())
+	if (ar.IsLoading())
 	{
-		// TODO: добавьте код сохранения
+		if (figuresData)
+		{
+			delete figuresData;
+		}
+		figuresData = new MyData();
 	}
-	else
-	{
-		// TODO: добавьте код загрузки
-	}
+	figuresData->Serialize(ar);
+	UpdateAllViews(NULL);
 }
 
 #ifdef SHARED_HANDLERS
@@ -144,3 +148,9 @@ MyData* COmegaSoftwareDoc::getFigureData()
 {
 	return figuresData;
 }
+
+
+//void COmegaSoftwareDoc::setView(COmegaSoftwareView* v)
+//{
+//	activeView = v;
+//}

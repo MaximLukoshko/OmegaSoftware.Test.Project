@@ -4,10 +4,7 @@
 
 MyHand::MyHand()
 {
-}
-
-MyHand::MyHand(COmegaSoftwareView* v) :MyAction(v)
-{
+	classCode = MY_HAND;
 }
 
 MyHand::~MyHand()
@@ -16,14 +13,11 @@ MyHand::~MyHand()
 
 
 // Запуск обновления данных
-void MyHand::Execute()
+IMyButtonAction* MyHand::Execute(MyData* figureData)
 {
-	COmegaSoftwareDoc* pDoc = view->GetDocument();
-	ASSERT_VALID(pDoc);
-	if (!pDoc)
-		return;
-	bool completed = pDoc->getFigureData()->moveFigure(ActionStartPoint, ActionStopPoint);
-	ActionStartPoint = ActionStopPoint = NULL;
+	bool completed = figureData->moveFigure(ActionStartPoint, ActionStopPoint);
+	ActionStartPoint = ActionStopPoint = CPoint(-10,-10);
+	return this;
 }
 
 // Прорисовка линии
@@ -33,9 +27,4 @@ void MyHand::Draw(CDC* pDC)
 	pDC->MoveTo(ActionStartPoint);
 	pDC->LineTo(ActionStopPoint);
 	pDC->Ellipse(ActionStopPoint.x - 3, ActionStopPoint.y - 3, ActionStopPoint.x + 3, ActionStopPoint.y + 3);
-}
-
-void MyHand::OnMouseMoveReaction()
-{
-	MyAction::OnMouseMoveReaction();
 }

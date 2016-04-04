@@ -54,15 +54,15 @@ public:
 	// Вернуть координаты мыши
 	CPoint getMouseLeftButtonDOWN();
 	CPoint getMouseLeftButtonUP();
+
 	afx_msg void OnRectangleButton();
 	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
 	afx_msg void OnLButtonUp(UINT nFlags, CPoint point);
-	afx_msg void OnEllipseButton();
 	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
+	afx_msg void OnEllipseButton();
 	afx_msg void OnRelationButton();
-	// изменение действия
-	void setAction(IMyButtonAction* act);
 	afx_msg void OnHandButton();
+	virtual void OnUpdate(CView* pSender, LPARAM lHint, CObject* pHint);
 };
 
 #ifndef _DEBUG  // отладочная версия в OmegaSoftwareView.cpp

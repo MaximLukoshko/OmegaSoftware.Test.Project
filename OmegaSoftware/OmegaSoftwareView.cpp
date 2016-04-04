@@ -38,13 +38,14 @@ BEGIN_MESSAGE_MAP(COmegaSoftwareView, CView)
 	ON_WM_MOUSEMOVE()
 	ON_COMMAND(ID_RELATION_BUTTON, &COmegaSoftwareView::OnRelationButton)
 	ON_COMMAND(ID_HAND_BUTTON, &COmegaSoftwareView::OnHandButton)
+
 END_MESSAGE_MAP()
 
 // создание/уничтожение COmegaSoftwareView
 
 COmegaSoftwareView::COmegaSoftwareView()
 {
-	// TODO: добавьте код создания
+	
 	action = NULL;
 }
 
@@ -60,7 +61,6 @@ BOOL COmegaSoftwareView::PreCreateWindow(CREATESTRUCT& cs)
 {
 	// TODO: изменить класс Window или стили посредством изменения
 	//  CREATESTRUCT cs
-
 	return CView::PreCreateWindow(cs);
 }
 
@@ -73,7 +73,6 @@ void COmegaSoftwareView::OnDraw(CDC* pDC)
 	if (!pDoc)
 		return;
 
-	// TODO: добавьте здесь код отрисовки для собственных данных
 	if (action){
 		pDC->SelectStockObject(NULL_BRUSH);
 		pDoc->getFigureData()->Draw(pDC);
@@ -144,7 +143,7 @@ void COmegaSoftwareView::OnRectangleButton()
 	{
 		delete action;
 	}
-	action = new MyRectangle(this);
+	action = new MyRectangle();
 }
 
 
@@ -157,8 +156,15 @@ void COmegaSoftwareView::OnLButtonDown(UINT nFlags, CPoint point)
 void COmegaSoftwareView::OnLButtonUp(UINT nFlags, CPoint point)
 {
 	MouseLeftButtonUP = point;
+	COmegaSoftwareDoc* pDoc = GetDocument();
+	ASSERT_VALID(pDoc);
+	if (!pDoc)
+		return;
+
 	if (action)
-		action->Execute();
+	{
+		action = action->Execute(pDoc->getFigureData());
+	}
 	Invalidate();
 }
 
@@ -169,16 +175,15 @@ void COmegaSoftwareView::OnEllipseButton()
 	{
 		delete action;
 	}
-	action = new MyEllipse(this);
+	action = new MyEllipse();
 }
 
 
 void COmegaSoftwareView::OnMouseMove(UINT nFlags, CPoint point)
 {
-	// TODO: добавьте свой код обработчика сообщений или вызов стандартного
 	if (((nFlags & MK_LBUTTON) == MK_LBUTTON) && action){
 		MouseLeftButtonUP = point;
-		action->OnMouseMoveReaction();
+		action->OnMouseMoveReaction(this->getMouseLeftButtonDOWN(), this->getMouseLeftButtonUP());
 		Invalidate();
 	}
 }
@@ -190,20 +195,8 @@ void COmegaSoftwareView::OnRelationButton()
 	{
 		delete action;
 	}
-	action = new MyRelation(this);
+	action = new MyRelation();
 }
-
-
-// изменение действия
-void COmegaSoftwareView::setAction(IMyButtonAction* act)
-{
-	/*if (action)
-	{
-		delete action;
-	}*/
-	action = act;
-}
-
 
 void COmegaSoftwareView::OnHandButton()
 {
@@ -211,5 +204,11 @@ void COmegaSoftwareView::OnHandButton()
 	{
 		delete action;
 	}
-	action = new MyHand(this);
+	action = new MyHand();
+}
+
+void COmegaSoftwareView::OnUpdate(CView* pSender, LPARAM lHint, CObject* pHint)
+{
+	CView::OnUpdate(pSender, lHint, pHint);
+	Invalidate();
 }

@@ -3,17 +3,21 @@
 #include <list>
 
 class MyFigure;
+class MyAction;
 class MyRelation;
+class COmegaSoftwareView;
 
 using namespace std;
 
-class MyData : IDrawable
+class MyData : public IDrawable
 {
-
 public:
 	MyData();
 	~MyData();
 	
+	MyFigure* getFigureByClassCode(int classCode);
+	MyAction* getActionByClassCode(int classCode);
+
 protected:
 	list<MyFigure*>* figures;
 	list<MyRelation*>* relation;
@@ -26,5 +30,6 @@ public:
 	//Перемещение фигуры
 	bool moveFigure(CPoint ActionStartPoint, CPoint ActionStopPoint);
 
+	virtual void Serialize(CArchive& archive);
 };
 
