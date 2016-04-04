@@ -45,6 +45,7 @@ END_MESSAGE_MAP()
 
 COmegaSoftwareView::COmegaSoftwareView()
 {
+	
 	action = NULL;
 }
 
@@ -204,4 +205,10 @@ void COmegaSoftwareView::OnHandButton()
 		delete action;
 	}
 	action = new MyHand();
+}
+
+void COmegaSoftwareView::OnUpdate(CView* pSender, LPARAM lHint, CObject* pHint)
+{
+	CView::OnUpdate(pSender, lHint, pHint);
+	Invalidate();
 }
