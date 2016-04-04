@@ -2,7 +2,7 @@
 #include "IMyButtonAction.h"
 
 
-IMyButtonAction::IMyButtonAction(COmegaSoftwareView* v) : view(v)
+IMyButtonAction::IMyButtonAction(COmegaSoftwareView* v)
 {
 
 }

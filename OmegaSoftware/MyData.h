@@ -3,6 +3,7 @@
 #include <list>
 
 class MyFigure;
+class MyAction;
 class MyRelation;
 class COmegaSoftwareView;
 
@@ -10,14 +11,13 @@ using namespace std;
 
 class MyData : public IDrawable
 {
-private:
-	COmegaSoftwareView* view;
-	MyFigure* getFigureByClassCode(int classCode);
 public:
-	void setView(COmegaSoftwareView* v);
 	MyData();
 	~MyData();
 	
+	MyFigure* getFigureByClassCode(int classCode);
+	MyAction* getActionByClassCode(int classCode);
+
 protected:
 	list<MyFigure*>* figures;
 	list<MyRelation*>* relation;

@@ -45,7 +45,6 @@ END_MESSAGE_MAP()
 
 COmegaSoftwareView::COmegaSoftwareView()
 {
-	// TODO: добавьте код создания
 	action = NULL;
 }
 
@@ -72,9 +71,7 @@ void COmegaSoftwareView::OnDraw(CDC* pDC)
 	ASSERT_VALID(pDoc);
 	if (!pDoc)
 		return;
-	//pDoc->getFigureData()->setView(this);
 
-	// TODO: добавьте здесь код отрисовки для собственных данных
 	if (action){
 		pDC->SelectStockObject(NULL_BRUSH);
 		pDoc->getFigureData()->Draw(pDC);
@@ -164,7 +161,9 @@ void COmegaSoftwareView::OnLButtonUp(UINT nFlags, CPoint point)
 		return;
 
 	if (action)
-		action->Execute(pDoc->getFigureData());
+	{
+		action = action->Execute(pDoc->getFigureData());
+	}
 	Invalidate();
 }
 
@@ -181,7 +180,6 @@ void COmegaSoftwareView::OnEllipseButton()
 
 void COmegaSoftwareView::OnMouseMove(UINT nFlags, CPoint point)
 {
-	// TODO: добавьте свой код обработчика сообщений или вызов стандартного
 	if (((nFlags & MK_LBUTTON) == MK_LBUTTON) && action){
 		MouseLeftButtonUP = point;
 		action->OnMouseMoveReaction(this->getMouseLeftButtonDOWN(), this->getMouseLeftButtonUP());
@@ -199,18 +197,6 @@ void COmegaSoftwareView::OnRelationButton()
 	action = new MyRelation();
 }
 
-
-// изменение действия
-/*void COmegaSoftwareView::setAction(IMyButtonAction* act)
-{
-	/*if (action)
-	{
-		delete action;
-	}
-	action = act;
-}*/
-
-
 void COmegaSoftwareView::OnHandButton()
 {
 	if (action)
@@ -219,14 +205,3 @@ void COmegaSoftwareView::OnHandButton()
 	}
 	action = new MyHand();
 }
-
-
-//void COmegaSoftwareView::OnFileSave()
-//{
-//	// TODO: добавьте свой код обработчика команд
-//	COmegaSoftwareDoc* pDoc = GetDocument();
-//	ASSERT_VALID(pDoc);
-//	if (!pDoc)
-//		return;
-//	pDoc->getFigureData()->setView(this);
-//}

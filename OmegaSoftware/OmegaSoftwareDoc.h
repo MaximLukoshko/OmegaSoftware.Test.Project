@@ -55,5 +55,5 @@ public:
 protected:
 	COmegaSoftwareView* activeView;
 public:
-	void setView(COmegaSoftwareView* v);
+//	void setView(COmegaSoftwareView* v);
 };

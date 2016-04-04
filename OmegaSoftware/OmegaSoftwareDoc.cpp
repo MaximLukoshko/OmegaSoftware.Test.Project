@@ -45,7 +45,7 @@ BOOL COmegaSoftwareDoc::OnNewDocument()
 		return FALSE;
 
 	figuresData = new MyData();
-	figuresData->setView(activeView);
+//	figuresData->setView(activeView);
 	// TODO: добавьте код повторной инициализации
 	// (ƒокументы SDI будут повторно использовать этот документ)
 
@@ -142,7 +142,7 @@ MyData* COmegaSoftwareDoc::getFigureData()
 }
 
 
-void COmegaSoftwareDoc::setView(COmegaSoftwareView* v)
-{
-	activeView = v;
-}
+//void COmegaSoftwareDoc::setView(COmegaSoftwareView* v)
+//{
+//	activeView = v;
+//}

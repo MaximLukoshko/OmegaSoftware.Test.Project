@@ -16,15 +16,11 @@ MyHand::~MyHand()
 
 
 // Запуск обновления данных
-bool MyHand::Execute(MyData* figureData)
+IMyButtonAction* MyHand::Execute(MyData* figureData)
 {
-	/*COmegaSoftwareDoc* pDoc = view->GetDocument();
-	ASSERT_VALID(pDoc);
-	if (!pDoc)
-		return;*/
-	bool completed = /*pDoc->getFigureData()*/figureData->moveFigure(ActionStartPoint, ActionStopPoint);
+	bool completed = figureData->moveFigure(ActionStartPoint, ActionStopPoint);
 	ActionStartPoint = ActionStopPoint = CPoint(-10,-10);
-	return completed;
+	return this;
 }
 
 // Прорисовка линии

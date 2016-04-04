@@ -4,6 +4,7 @@
 #include "MyRelation.h"
 #include "MyRectangle.h"
 #include "MyEllipse.h"
+#include "MyHand.h"
 
 
 MyData::MyData()
@@ -154,16 +155,23 @@ MyFigure* MyData::getFigureByClassCode(int classCode)
 	switch (classCode)
 	{
 	case MY_RECTANGLE:
-		return new MyRectangle(view);
+		return new MyRectangle();
 	case MY_ELLIPSE:
-		return new MyEllipse(view);
+		return new MyEllipse();
 	default:
 		return NULL;
-		break;
 	}
 }
 
-void MyData::setView(COmegaSoftwareView* v)
+MyAction* MyData::getActionByClassCode(int classCode)
 {
-	view = v;
+	switch (classCode)
+	{
+	case MY_RELATION:
+		return new MyRelation();
+	case MY_HAND:
+		return new MyHand();
+	default:
+		return NULL;
+	}
 }

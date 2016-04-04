@@ -8,7 +8,7 @@ class IMyButtonAction : public IDrawable
 {
 protected:
 	// Указатель на CView, на котором действие будет отображаться
-	COmegaSoftwareView* view;
+	//COmegaSoftwareView* view;
 	CPoint ActionStartPoint;
 	CPoint ActionStopPoint;
 	int classCode;
@@ -19,7 +19,7 @@ public:
 	virtual ~IMyButtonAction();
 
 	// Запуск обновления данных
-	virtual bool Execute(MyData* figureData) = 0;
+	virtual IMyButtonAction* Execute(MyData* figureData) = 0;
 	// Реакция действия на движение мыши
 	virtual void OnMouseMoveReaction(CPoint ActionStartPoint, CPoint ActionStopPoint);
 	virtual void Serialize(CArchive& archive);

@@ -13,14 +13,10 @@ MyFigure::MyFigure(COmegaSoftwareView* v) :IMyButtonAction(v)
 	rectangle = new CRect(0, 0, 100, 100);
 }
 
-bool MyFigure::Execute(MyData* figureData){
-	/*COmegaSoftwareDoc* pDoc = view->GetDocument();
-	ASSERT_VALID(pDoc);
-	if (!pDoc)
-		return;*/
+IMyButtonAction* MyFigure::Execute(MyData* figureData){
 	if (figureData->addFigure(this))
 	{
-		return true;
+		return figureData->getFigureByClassCode(this->getClassCode());
 	}
 	return false;
 };

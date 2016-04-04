@@ -12,7 +12,7 @@ public:
 	MyHand(COmegaSoftwareView*);
 	~MyHand();
 	// Запуск обновления данных
-	bool Execute(MyData* figureData);
+	IMyButtonAction* Execute(MyData* figureData);
 	// Прорисовка линии
 	void Draw(CDC* pDC);
 	//void OnMouseMoveReaction(CPoint StartPoint, CPoint StopPoint);

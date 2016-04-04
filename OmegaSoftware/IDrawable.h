@@ -13,6 +13,10 @@ protected:
 		MY_RECTANGLE,
 		MY_ELLIPSE
 	};
+	/*
+protected:
+	MyFigure* getFigureByClassCode(int classCode);
+	*/
 public:
 	IDrawable();
 	virtual ~IDrawable();

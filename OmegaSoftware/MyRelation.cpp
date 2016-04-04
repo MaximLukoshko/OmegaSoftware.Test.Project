@@ -6,6 +6,8 @@
 
 MyRelation::MyRelation()
 {
+	figure_1 = NULL;
+	figure_2 = NULL;
 	classCode = MY_RELATION;
 }
 
@@ -19,23 +21,19 @@ MyRelation::~MyRelation()
 {
 }
 
-bool MyRelation::Execute(MyData* figureData)
+IMyButtonAction* MyRelation::Execute(MyData* figureData)
 {
-	/*COmegaSoftwareDoc* pDoc = view->GetDocument();
-	ASSERT_VALID(pDoc);
-	if (!pDoc)
-		return;*/
-	bool completed =/* pDoc->getFigureData()*/figureData->addRelation(this);
+
+	bool completed = figureData->addRelation(this);
 	if (completed)
 	{
-		//view->setAction(new MyRelation(view));
-		return true;
+		return new MyRelation();
 	}
 	else
 	{
 		figure_1 = figure_2 = NULL;
 		ActionStartPoint = ActionStopPoint = CPoint();
-		return false;
+		return this;
 	}
 }
 
