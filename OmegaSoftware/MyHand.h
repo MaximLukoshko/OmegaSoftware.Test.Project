@@ -2,6 +2,8 @@
 #include "MyAction.h"
 
 class COmegaSoftwareView;
+class MyData;
+
 class MyHand :
 	public MyAction
 {
@@ -10,10 +12,10 @@ public:
 	MyHand(COmegaSoftwareView*);
 	~MyHand();
 	// Запуск обновления данных
-	void Execute();
+	bool Execute(MyData* figureData);
 	// Прорисовка линии
 	void Draw(CDC* pDC);
-	void OnMouseMoveReaction();
+	//void OnMouseMoveReaction(CPoint StartPoint, CPoint StopPoint);
 	int getClassCode();
 };
 

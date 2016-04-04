@@ -4,12 +4,17 @@
 
 class MyFigure;
 class MyRelation;
+class COmegaSoftwareView;
 
 using namespace std;
 
 class MyData : public IDrawable
 {
+private:
+	COmegaSoftwareView* view;
+	MyFigure* getFigureByClassCode(int classCode);
 public:
+	void setView(COmegaSoftwareView* v);
 	MyData();
 	~MyData();
 	

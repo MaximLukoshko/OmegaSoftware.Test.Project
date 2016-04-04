@@ -61,8 +61,9 @@ public:
 	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
 	afx_msg void OnRelationButton();
 	// изменение действия
-	void setAction(IMyButtonAction* act);
+	//void setAction(IMyButtonAction* act);
 	afx_msg void OnHandButton();
+//	afx_msg void OnFileSave();
 };
 
 #ifndef _DEBUG  // отладочная версия в OmegaSoftwareView.cpp

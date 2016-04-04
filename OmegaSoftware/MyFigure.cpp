@@ -5,6 +5,7 @@
 
 MyFigure::MyFigure()
 {
+	rectangle = new CRect();
 }
 
 MyFigure::MyFigure(COmegaSoftwareView* v) :IMyButtonAction(v)
@@ -12,12 +13,16 @@ MyFigure::MyFigure(COmegaSoftwareView* v) :IMyButtonAction(v)
 	rectangle = new CRect(0, 0, 100, 100);
 }
 
-void MyFigure::Execute(){
-	COmegaSoftwareDoc* pDoc = view->GetDocument();
+bool MyFigure::Execute(MyData* figureData){
+	/*COmegaSoftwareDoc* pDoc = view->GetDocument();
 	ASSERT_VALID(pDoc);
 	if (!pDoc)
-		return;
-	pDoc->getFigureData()->addFigure(this);
+		return;*/
+	if (figureData->addFigure(this))
+	{
+		return true;
+	}
+	return false;
 };
 
 MyFigure::~MyFigure()
@@ -25,12 +30,13 @@ MyFigure::~MyFigure()
 	delete rectangle;
 }
 
-void MyFigure::OnMouseMoveReaction()
+void MyFigure::OnMouseMoveReaction(CPoint StartPoint, CPoint StopPoint)
 {
-	rectangle->SetRect(min(view->getMouseLeftButtonDOWN().x, view->getMouseLeftButtonUP().x),
-		min(view->getMouseLeftButtonDOWN().y, view->getMouseLeftButtonUP().y),
-		max(view->getMouseLeftButtonDOWN().x, view->getMouseLeftButtonUP().x),
-		max(view->getMouseLeftButtonDOWN().y, view->getMouseLeftButtonUP().y));
+	IMyButtonAction::OnMouseMoveReaction(StartPoint, StopPoint);
+	rectangle->SetRect(min(ActionStartPoint.x, ActionStopPoint.x),
+		min(ActionStartPoint.y, ActionStopPoint.y),
+		max(ActionStartPoint.x, ActionStopPoint.x),
+		max(ActionStartPoint.y, ActionStopPoint.y));
 }
 
 

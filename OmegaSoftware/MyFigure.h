@@ -13,8 +13,8 @@ public:
 	MyFigure();
 	MyFigure(COmegaSoftwareView* v);
 	// Запуск обновления данных
-	virtual void Execute();
-	void OnMouseMoveReaction();
+	virtual bool Execute(MyData* figureData);
+	void OnMouseMoveReaction(CPoint StartPoint, CPoint StopPoint);
 	virtual ~MyFigure();
 
 protected:

@@ -2,6 +2,8 @@
 #include "MyData.h"
 #include "MyFigure.h"
 #include "MyRelation.h"
+#include "MyRectangle.h"
+#include "MyEllipse.h"
 
 
 MyData::MyData()
@@ -108,12 +110,60 @@ bool MyData::moveFigure(CPoint ActionStartPoint, CPoint ActionStopPoint)
 
 void MyData::Serialize(CArchive& archive)
 {
-	for each (MyFigure* figure in *figures)
+	if (archive.IsStoring())
 	{
-		figure->Serialize(archive);
+		archive << static_cast<int>(figures->size());
+		for each (MyFigure* figure in *figures)
+		{
+			figure->Serialize(archive);
+		}
+		archive << static_cast<int>(relation->size());
+		for each (MyRelation* rel in *relation)
+		{
+			rel->Serialize(archive);
+		}
 	}
-	for each (MyRelation* rel in *relation)
+	else
 	{
-		rel->Serialize(archive);
+		if (figures)
+		{
+			delete figures;
+		}
+		if (relation)
+		{
+			delete relation;
+		}
+
+		figures = new list<MyFigure*>();
+		relation = new list<MyRelation*>();
+		int numFigures;
+		archive >> numFigures;
+		while (numFigures > 0)
+		{
+			int classCode;
+			archive >> classCode;
+			MyFigure* fig = getFigureByClassCode(classCode);
+			figures->push_back(fig);
+			numFigures--;
+		}
 	}
+}
+
+MyFigure* MyData::getFigureByClassCode(int classCode)
+{
+	switch (classCode)
+	{
+	case MY_RECTANGLE:
+		return new MyRectangle(view);
+	case MY_ELLIPSE:
+		return new MyEllipse(view);
+	default:
+		return NULL;
+		break;
+	}
+}
+
+void MyData::setView(COmegaSoftwareView* v)
+{
+	view = v;
 }

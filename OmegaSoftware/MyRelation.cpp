@@ -6,6 +6,7 @@
 
 MyRelation::MyRelation()
 {
+	classCode = MY_RELATION;
 }
 
 MyRelation::MyRelation(COmegaSoftwareView* v) : MyAction(v)
@@ -18,21 +19,23 @@ MyRelation::~MyRelation()
 {
 }
 
-void MyRelation::Execute()
+bool MyRelation::Execute(MyData* figureData)
 {
-	COmegaSoftwareDoc* pDoc = view->GetDocument();
+	/*COmegaSoftwareDoc* pDoc = view->GetDocument();
 	ASSERT_VALID(pDoc);
 	if (!pDoc)
-		return;
-	bool completed = pDoc->getFigureData()->addRelation(this);
+		return;*/
+	bool completed =/* pDoc->getFigureData()*/figureData->addRelation(this);
 	if (completed)
 	{
-		view->setAction(new MyRelation(view));
+		//view->setAction(new MyRelation(view));
+		return true;
 	}
 	else
 	{
 		figure_1 = figure_2 = NULL;
 		ActionStartPoint = ActionStopPoint = CPoint();
+		return false;
 	}
 }
 
@@ -47,11 +50,12 @@ void MyRelation::Draw(CDC* pDC)
 	pDC->MoveTo(ActionStartPoint);
 	pDC->LineTo(ActionStopPoint);
 }
-
-void MyRelation::OnMouseMoveReaction()
+/*
+void MyRelation::OnMouseMoveReaction(CPoint StartPoint, CPoint StopPoint)
 {
 	MyAction::OnMouseMoveReaction();
 }
+*/
 
 int MyRelation::getClassCode()
 {

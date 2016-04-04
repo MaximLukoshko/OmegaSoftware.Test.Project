@@ -18,10 +18,10 @@ public:
 	MyRelation(COmegaSoftwareView* v);
 	~MyRelation();
 	// Запуск обновления данных
-	void Execute();
+	bool Execute(MyData* figureData);
 	// Прорисовка линии
 	void Draw(CDC* pDC);
-	void OnMouseMoveReaction();
+	//void OnMouseMoveReaction(CPoint StartPoint, CPoint StopPoint);
 
 	friend bool MyData::addRelation(MyRelation* rel);
 	int getClassCode();

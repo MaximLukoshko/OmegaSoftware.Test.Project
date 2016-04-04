@@ -12,8 +12,8 @@ public:
 	// Прорисовка самой фигуры	
 	void Draw(CDC* pDC);
 	// Запуск обновления данных
-	void Execute();
-	void OnMouseMoveReaction();
-	int getClassCode();
+	//void Execute(MyData* figureData);
+	//void OnMouseMoveReaction();
+	//int getClassCode();
 };
 
