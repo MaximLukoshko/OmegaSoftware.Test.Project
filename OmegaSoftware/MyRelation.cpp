@@ -42,3 +42,16 @@ void MyRelation::Draw(CDC* pDC)
 	pDC->MoveTo(ActionStartPoint);
 	pDC->LineTo(ActionStopPoint);
 }
+
+void MyRelation::Serialize(CArchive& archive)
+{
+	IMyButtonAction::Serialize(archive);
+	if (archive.IsStoring())
+	{
+		archive << ActionStartPoint.x << ActionStartPoint.y << ActionStopPoint.x << ActionStopPoint.y;
+	}
+	else
+	{
+		archive >> ActionStartPoint.x >> ActionStartPoint.y >> ActionStopPoint.x >> ActionStopPoint.y;
+	}
+}

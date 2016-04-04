@@ -126,17 +126,6 @@ void MyData::Serialize(CArchive& archive)
 	}
 	else
 	{
-		if (figures)
-		{
-			delete figures;
-		}
-		if (relation)
-		{
-			delete relation;
-		}
-
-		figures = new list<MyFigure*>();
-		relation = new list<MyRelation*>();
 		int numFigures;
 		archive >> numFigures;
 		while (numFigures > 0)
@@ -144,8 +133,20 @@ void MyData::Serialize(CArchive& archive)
 			int classCode;
 			archive >> classCode;
 			MyFigure* fig = getFigureByClassCode(classCode);
+			fig->Serialize(archive);
 			figures->push_back(fig);
 			numFigures--;
+		}
+		int numRelation;
+		archive >> numRelation;
+		while (numRelation > 0)
+		{
+			int classCode;
+			archive >> classCode;
+			MyRelation* rel = new MyRelation();
+			rel->Serialize(archive);
+			addRelation(rel);
+			numRelation--;
 		}
 	}
 }

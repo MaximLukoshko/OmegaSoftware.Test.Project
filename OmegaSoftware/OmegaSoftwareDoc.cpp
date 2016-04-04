@@ -45,7 +45,7 @@ BOOL COmegaSoftwareDoc::OnNewDocument()
 		return FALSE;
 
 	figuresData = new MyData();
-//	figuresData->setView(activeView);
+
 	// TODO: добавьте код повторной инициализации
 	// (ƒокументы SDI будут повторно использовать этот документ)
 
@@ -59,8 +59,16 @@ BOOL COmegaSoftwareDoc::OnNewDocument()
 
 void COmegaSoftwareDoc::Serialize(CArchive& ar)
 {
+	if (ar.IsLoading())
+	{
+		if (figuresData)
+		{
+			delete figuresData;
+		}
+		figuresData = new MyData();
+	}
 	figuresData->Serialize(ar);
-	UpdateAllViews(0);
+	UpdateAllViews(NULL);
 }
 
 #ifdef SHARED_HANDLERS

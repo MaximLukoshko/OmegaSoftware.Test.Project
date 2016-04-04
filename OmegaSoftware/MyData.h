@@ -31,6 +31,5 @@ public:
 	bool moveFigure(CPoint ActionStartPoint, CPoint ActionStopPoint);
 
 	virtual void Serialize(CArchive& archive);
-
 };
 

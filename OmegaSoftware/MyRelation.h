@@ -21,6 +21,8 @@ public:
 	IMyButtonAction* Execute(MyData* figureData);
 	// Прорисовка линии
 	void Draw(CDC* pDC);
+	virtual void Serialize(CArchive& archive);
+
 	friend bool MyData::addRelation(MyRelation* rel);
 };
 
