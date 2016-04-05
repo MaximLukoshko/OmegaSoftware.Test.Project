@@ -47,7 +47,7 @@ END_MESSAGE_MAP()
 
 COmegaSoftwareView::COmegaSoftwareView()
 {
-	action = new MyRectangle();
+	action = new MyRelation();
 }
 
 COmegaSoftwareView::~COmegaSoftwareView()

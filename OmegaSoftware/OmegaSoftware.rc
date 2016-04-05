@@ -255,6 +255,7 @@ END
 STRINGTABLE
 BEGIN
     IDP_OLE_INIT_FAILED     "Ќе удалось выполнить инициализацию OLE.  ”бедитесь в том, что используютс€ правильные версии библиотек OLE."
+    AFX_IDC_ALLFILTER       "*.my"
 END
 
 STRINGTABLE
