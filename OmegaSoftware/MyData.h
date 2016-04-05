@@ -17,11 +17,11 @@ protected:
 
 public:
 
-	MyFigure* getFigureByClassCode(int classCode);
-	MyAction* getActionByClassCode(int classCode);
-
 	MyData();
 	~MyData();
+
+	MyFigure* getFigureByClassCode(int classCode);
+	MyAction* getActionByClassCode(int classCode);
 	
 	void Draw(CDC* pDC);
 

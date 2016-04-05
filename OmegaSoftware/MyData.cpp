@@ -17,6 +17,16 @@ MyData::MyData()
 
 MyData::~MyData()
 {
+	for each (MyFigure* figure in *figures)
+	{
+		delete figure;
+	}
+
+	for each (MyRelation* rel in *relation)
+	{
+		delete rel;
+	}
+
 	delete figures;
 	delete relation;
 }
