@@ -12,6 +12,8 @@
 #define ID_RELATION_BUTTON              32775
 #define ID_BUTTON32779                  32779
 #define ID_HAND_BUTTON                  32779
+#define ID_BUTTON32780                  32780
+#define ID_TRIANGLE_BUTTON              32780
 #define IDS_TITLE                       61441
 
 // Next default values for new objects
@@ -19,7 +21,7 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        311
-#define _APS_NEXT_COMMAND_VALUE         32780
+#define _APS_NEXT_COMMAND_VALUE         32781
 #define _APS_NEXT_CONTROL_VALUE         1000
 #define _APS_NEXT_SYMED_VALUE           310
 #endif

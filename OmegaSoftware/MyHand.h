@@ -9,10 +9,11 @@ class MyHand :
 {
 public:
 	MyHand();
-	MyHand(COmegaSoftwareView*);
 	~MyHand();
+
 	// Запуск обновления данных
 	IMyButtonAction* Execute(MyData* figureData);
+
 	// Прорисовка линии
 	void Draw(CDC* pDC);
 };

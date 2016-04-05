@@ -1,12 +1,6 @@
 #include "stdafx.h"
 #include "IMyButtonAction.h"
 
-
-IMyButtonAction::IMyButtonAction(COmegaSoftwareView* v)
-{
-
-}
-
 IMyButtonAction::IMyButtonAction()
 {
 }

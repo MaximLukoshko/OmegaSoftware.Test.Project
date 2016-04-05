@@ -111,6 +111,7 @@
     <ClInclude Include="MyHand.h" />
     <ClInclude Include="MyRectangle.h" />
     <ClInclude Include="MyRelation.h" />
+    <ClInclude Include="MyTriangle.h" />
     <ClInclude Include="OmegaSoftware.h" />
     <ClInclude Include="OmegaSoftwareDoc.h" />
     <ClInclude Include="OmegaSoftwareView.h" />
@@ -129,6 +130,7 @@
     <ClCompile Include="MyHand.cpp" />
     <ClCompile Include="MyRectangle.cpp" />
     <ClCompile Include="MyRelation.cpp" />
+    <ClCompile Include="MyTriangle.cpp" />
     <ClCompile Include="OmegaSoftware.cpp" />
     <ClCompile Include="OmegaSoftwareDoc.cpp" />
     <ClCompile Include="OmegaSoftwareView.cpp" />

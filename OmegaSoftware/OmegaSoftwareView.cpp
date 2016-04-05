@@ -14,6 +14,7 @@
 
 #include "MyRectangle.h"
 #include "MyEllipse.h"
+#include "MyTriangle.h"
 #include "MyRelation.h"
 #include "MyHand.h"
 
@@ -39,14 +40,14 @@ BEGIN_MESSAGE_MAP(COmegaSoftwareView, CView)
 	ON_COMMAND(ID_RELATION_BUTTON, &COmegaSoftwareView::OnRelationButton)
 	ON_COMMAND(ID_HAND_BUTTON, &COmegaSoftwareView::OnHandButton)
 
+	ON_COMMAND(ID_TRIANGLE_BUTTON, &COmegaSoftwareView::OnTriangleButton)
 END_MESSAGE_MAP()
 
 // создание/уничтожение COmegaSoftwareView
 
 COmegaSoftwareView::COmegaSoftwareView()
 {
-	
-	action = NULL;
+	action = new MyRectangle();
 }
 
 COmegaSoftwareView::~COmegaSoftwareView()
@@ -207,8 +208,12 @@ void COmegaSoftwareView::OnHandButton()
 	action = new MyHand();
 }
 
-void COmegaSoftwareView::OnUpdate(CView* pSender, LPARAM lHint, CObject* pHint)
+
+void COmegaSoftwareView::OnTriangleButton()
 {
-	CView::OnUpdate(pSender, lHint, pHint);
-	Invalidate();
+	if (action)
+	{
+		delete action;
+	}
+	action = new MyTriangle();
 }

@@ -5,25 +5,12 @@
 
 
 MyAction::MyAction()
-/*: ActionStartPoint(0), ActionStopPoint(0)*/
 {
-}
-
-MyAction::MyAction(COmegaSoftwareView* v):IMyButtonAction(v)
-{
-	/*ActionStartPoint = new CPoint();
-	ActionStopPoint = new CPoint();*/
 }
 
 MyAction::~MyAction()
 {
 }
-/*
-void MyAction::OnMouseMoveReaction(CPoint StartPoint, CPoint StopPoint)
-{
-	IMyButtonAction::OnMouseMoveReaction
-}
-*/
 
 void MyAction::Serialize(CArchive& archive)
 {

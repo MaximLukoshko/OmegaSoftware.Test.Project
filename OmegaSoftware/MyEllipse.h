@@ -7,7 +7,6 @@ class MyEllipse :
 {
 public:
 	MyEllipse();
-	MyEllipse(COmegaSoftwareView* v);
 	~MyEllipse();
 	// Прорисовка самой фигуры	
 	void Draw(CDC* pDC);

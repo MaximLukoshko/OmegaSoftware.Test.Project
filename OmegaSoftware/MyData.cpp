@@ -5,6 +5,7 @@
 #include "MyRectangle.h"
 #include "MyEllipse.h"
 #include "MyHand.h"
+#include "MyTriangle.h"
 
 
 MyData::MyData()
@@ -159,6 +160,8 @@ MyFigure* MyData::getFigureByClassCode(int classCode)
 		return new MyRectangle();
 	case MY_ELLIPSE:
 		return new MyEllipse();
+	case MY_TRIANGLE:
+		return new MyTriangle();
 	default:
 		return NULL;
 	}

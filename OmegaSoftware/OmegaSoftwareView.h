@@ -62,7 +62,7 @@ public:
 	afx_msg void OnEllipseButton();
 	afx_msg void OnRelationButton();
 	afx_msg void OnHandButton();
-	virtual void OnUpdate(CView* pSender, LPARAM lHint, CObject* pHint);
+	afx_msg void OnTriangleButton();
 };
 
 #ifndef _DEBUG  // отладочная версия в OmegaSoftwareView.cpp
